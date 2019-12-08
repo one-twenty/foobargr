@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
+    </head>
+    <body>
+        <!-- Dropdown Structure -->
+        <ul id="categories-dropdown" class="dropdown-content">
+            <li><a href="#!" class="deep-purple-text">one</a></li>
+            <!-- <li class="divider"></li> -->
+            <li><a href="#!" class="deep-purple-text">two</a></li>
+            <!-- <li class="divider"></li> -->
+            <li><a href="#!" class="deep-purple-text">three</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper deep-purple">
+                <a href="#!" class="brand-logo">Forum</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="">Register</a></li>
+                    <li><a href="">Login</a></li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="categories-dropdown">Categories<i 
+                                            class="material-icons right">keyboard_arrow_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <script src="{% static 'forum/js/dropdown.js' %}"></script>
+
+
+        {% block content %}
+        {% endblock %}
+
+
+    </body>
+</html>
