@@ -1,0 +1,3 @@
+db.sqlite3
+myforum/secret_key.txt
+**/__pycache__
