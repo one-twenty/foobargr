@@ -21,14 +21,14 @@
         <nav class="nav-extended deep-purple">
             <div class="nav-wrapper">
                 <a href="{% url 'forum:homepage' %}" class="brand-logo">programatistis.gr</a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <a href="#" data-target="mobile-links" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
                         <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">{{ user.username }}<i 
                             class="material-icons right">keyboard_arrow_down</i></a></li>
                     {% else %}
-                        <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
                         <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
+                        <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -37,12 +37,25 @@
                     <li class="tab"><a href="#test1">Test 1</a></li>
                     <li class="tab"><a href="#test2">Test 2</a></li>
                     <li class="tab"><a href="#test4">Test 4</a></li>
+                    <li class="tab"><a href="#test4">Test 4</a></li>
+                    <li class="tab"><a href="#test4">Test 4</a></li>
                 </ul>
             </div>
         </nav>
-              
+
+        <ul class="sidenav" id="mobile-links">
+            {% if user.is_authenticated %}
+                <li><a href="#!" class="deep-purple-text">{{user.username}}</a></li>
+                <li><a href="#!" class="deep-purple-text">Ρυθμίσεις</a></li>
+                <li><a class="deep-purple-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+            {% else %}
+                <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
+                <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
+            {% endif %}
+        </ul>
+
         <script src="{% static 'forum/js/dropdown.js' %}"></script>
-     
+        <script src="{% static 'forum/js/sidebar.js' %}"></script>
 
         {% if messages %}
             {% for message in messages %}
@@ -61,7 +74,7 @@
 
         {% block content %}
         {% endblock %}
-
+		
         <footer class="page-footer deep-purple">
             <div class="container">
                 <div class="row">
