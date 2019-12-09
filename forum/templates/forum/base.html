@@ -24,20 +24,32 @@
                 <ul class="right hide-on-med-and-down">
                 {% if user.is_authenticated %}
                     <li>{{ user.username }}</li>
-                    <li><a href="{% url 'forum:logout' %}">Logout</li>
+                    <li><a href="{% url 'forum:logout' %}">Αποσύνδεση</li>
                 {% else %}
-                    <li><a href="{% url 'forum:register' %}">Register</a></li>
-                    <li><a href="{% url 'forum:login' %}">Login</a></li>
+                    <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
+                    <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
                 {% endif %}
                 <!-- Dropdown Trigger -->
-                <li><a class="dropdown-trigger" href="#!" data-target="categories-dropdown">Categories<i 
+                <li><a class="dropdown-trigger" href="#!" data-target="categories-dropdown">Κατηρορίες<i 
                                             class="material-icons right">keyboard_arrow_down</i></a></li>
-                </ul>
-
-                
+                </ul>    
             </div>
         </nav>
         <script src="{% static 'forum/js/dropdown.js' %}"></script>
+        
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    <script>M.toast({html: '{{message}}', classes:'green', displayLength:5000});</script>
+                {% elif message.tags == 'error' %}
+                    <script>M.toast({html: '{{message}}', classes:'red', displayLength:5000});</script>
+                {% elif message.tags == 'warning' %}
+                    <script>M.toast({html: '{{message}}', classes:'orange', displayLength:5000});</script>
+                {% elif message.tags == 'info' %}
+                    <script>M.toast({html: '{{message}}', classes:'blue', displayLength:5000});</script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
 
         {% block content %}
         {% endblock %}

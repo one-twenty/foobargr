@@ -2,48 +2,51 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpRequest
-# from .form import RegisterForm
-#from django.contrib import messages
+from .form import RegisterForm, LoginForm
+from django.contrib import messages
 
 
 def homepage(request):
-    return render(request, 'forum/index.html')
+    return render(request, 'forum/homepage.html')
 
 
 def register(request: HttpRequest):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
             # username = form.cleaned_data.get('username')
+            messages.success(request, 'Επιτυχής εγγραφή')
             login(request, user)
             return redirect('forum:homepage')
-        # else:
-        #     for msg in form.error_messages:
-        #         print(form.error_messages[msg])
-        #     return render(request=request,
-        #                   template_name="forum/register.html",
-        #                   context={"form": form})
+        else:
+            messages.error(request, form.errors)
     
-    form = UserCreationForm
+    form = RegisterForm
     return render(request, 'forum/register.html', {'form': form})
 
 
 def logout_request(request: HttpRequest):
     logout(request)
-    #messages TODO
+    messages.success(request, 'Επιτυχής Αποσύνδεση')
     return redirect('forum:homepage')
+
 
 def login_request(request: HttpRequest):
     if request.method == 'POST':
-        form = AuthenticationForm(request, request.POST)
+        form = LoginForm(request, request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
+                messages.success(request, f'Καλωσόρισες, {username}')
                 login(request, user)
-                return redirect('/')
-    form = AuthenticationForm()
+                return redirect('forum:homepage')
+            else:
+                messages.error(request, 'Λάθος Όνομα Χρήστη ή Κωδικός')
+        else:
+            messages.error(request, 'Λάθος Όνομα Χρήστη ή Κωδικός')
+    form = LoginForm
     return render(request, 'forum/login.html', {'form': form})
                 
