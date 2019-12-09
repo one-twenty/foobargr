@@ -1,0 +1,24 @@
+.login-card {
+    padding: 150px;
+    margin-top: 50px;
+    animation: card-show 1s;
+}
+
+.forgot-password {
+    text-decoration: underline;
+    text-align: center;
+    display: block;
+}
+
+.forgot-password:hover {
+    color: blue;
+}
+
+@keyframes card-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

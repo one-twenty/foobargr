@@ -1,0 +1,21 @@
+.register-card {
+    padding: 150px;
+    margin-top: 50px;
+    animation: card-show 1s;
+}
+
+.button {
+    position: relative;
+    margin: -20px -50px;
+    top: 50%;
+    left: 50%;
+}
+
+@keyframes card-show{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
