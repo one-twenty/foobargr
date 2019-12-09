@@ -2,14 +2,21 @@
 
 {% block content %}
 
-    <div class="container">
-        <form method="POST">
-            {% csrf_token %}  
-            {{form.as_p}}
-            <button class="btn deep-purple" type="submit">Register</button>
+    <div class="row">
+        <form class="col s30" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="row">
+                    <div class="input-field">
+                        {{field}}
+                        <label for="{{field.id_for_label}}">{{field.label_tag}}</label>
+                    </div>
+                </div>
+            {% endfor %}
+            <button class="btn deep-purple" type="submit">Εγγραφή</button>
         </form>
         <br>
-        If you already have an account <a href="{% url 'forum:login' %}"><strong>Login</strong></a>
+        Αν έχεις ήδη λογαριασμό, <a href="{% url 'forum:login' %}"><strong>Συνδέσου</strong></a> εδώ
    </div>   
 
 {% endblock content %}
