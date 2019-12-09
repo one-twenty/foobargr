@@ -50,3 +50,7 @@ def login_request(request: HttpRequest):
     form = LoginForm
     return render(request, 'forum/login.html', {'form': form})
                 
+
+def error_404(request, exception):
+        data = {}
+        return render(request,'forum/404.html', data)
