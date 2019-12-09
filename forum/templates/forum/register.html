@@ -1,0 +1,15 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}  
+            {{form.as_p}}
+            <button class="btn deep-purple" type="submit">Register</button>
+        </form>
+        <br>
+        If you already have an account <a href="{% url 'forum:login' %}"><strong>Login</strong></a>
+   </div>   
+
+{% endblock content %}

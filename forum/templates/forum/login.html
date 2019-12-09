@@ -1,0 +1,15 @@
+{% extends 'forum/base.html' %}
+
+{% block content %}
+
+    <div class="login-card">
+        <div class="container">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}
