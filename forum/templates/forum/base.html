@@ -78,16 +78,37 @@
 
                     </ul>
             </nav>
-
+        
+        <!-- Sidenav -->
         <ul class="sidenav" id="mobile-links">
             {% if user.is_authenticated %}
-                <li><a href="#!" class="deep-purple-text">{{user.username}}</a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
+                    class="material-icons right">person</i></a></li>
+                <li><div class="divider"></div></li>
+            {% else %}
+                <li><a class="deep-purple-text" href="{% url 'forum:login' %}">Σύνδεση</a></li>
+                <li><a class="deep-purple-text" href="{% url 'forum:register' %}">Εγγραφή</a></li>
+            {% endif %}
+            <li><a class="dropdown-trigger" href="#!" data-target="languages-dropdown-sidenav">Γλώσσες Προγραματισμού</a></li>
+                <li><a class="deep-purple-text" href="#">Γλώσσες Προγραματισμού</a></li>
+                <li><a class="deep-purple-text" href="#">Web Development</a></li>
+                <li><a class="deep-purple-text" href="#">Mobile Development</a></li>
+                <li><a class="deep-purple-text" href="#">Τεχνητή Νοημοσύνη</a></li>
+                <li><a class="deep-purple-text" href="#">Εκπαίδευση</a></li>
+        </ul>
+
+        <!-- Dropdown Profile Sidenav Structure -->
+        <ul id="profile-dropdown-sidenav" class="dropdown-content">
+                <li><a href="#!" class="deep-purple-text">Προφιλ</a></li>
                 <li><a href="#!" class="deep-purple-text">Ρυθμίσεις</a></li>
                 <li><a class="deep-purple-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
-            {% else %}
-                <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
-                <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
-            {% endif %}
+        </ul>
+
+        <!-- Dropdown Languages Sidenav Structure -->
+        <ul id="languages-dropdown-sidenav" class="dropdown-content">
+                <li><a href="#!" class="deep-purple-text">Python</a></li>
+                <li><a href="#!" class="deep-purple-text">C/C++</a></li>
+                <li><a href="#!" class="deep-purple-text">Java</a></li>
         </ul>
 
         <!-- Error Messages -->
