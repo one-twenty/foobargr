@@ -54,9 +54,6 @@
             {% endif %}
         </ul>
 
-        <script src="{% static 'forum/js/dropdown.js' %}"></script>
-        <script src="{% static 'forum/js/sidebar.js' %}"></script>
-
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'success' %}
@@ -100,5 +97,7 @@
                 </div>
             </div>
         </footer> 
+
+    <script src="{% static 'forum/js/base.js' %}"></script>
     </body>
 </html>
