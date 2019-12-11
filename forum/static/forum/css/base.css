@@ -7,23 +7,79 @@ body {
     color: black;
 }
 
+*:focus {
+    outline: none;
+}
+
 main {
     flex: 1 0 auto;
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    margin-top: -2200px;
 }
 
-#toast-container {
-    top: 11% !important;
-    right: 1% !important;
+@media only screen and (min-width: 601px) {
+    #toast-container {
+        position: absolute;
+        left: 44%;
+        top: 14%;
+        text-align: center;
+        width: 200px;
+    }
 }
+/* 
+@media only screen and (min-width: 601px) {
+    #toast-container {
+        position: relative;
+        transform: translate(1500px, 20px);
+        text-align: center;
+        width: 240px;
+    }
+} */
 
-.brand-logo{
+.brand-logo {
     margin-left: 10px;
+}
+
+li {
+    text-transform: none !important;
+}
+
+.dropdown-content {
+    height: auto !important;
+}
+
+.dropdown-content li {
+    text-align: center;
+}
+
+.nav-width li {
+    width: 307px;
+    text-align: center;
+}
+
+.nav-categories {
+    line-height: 45px;
+}
+
+.nav-categories > ul > li > a:hover {
+    cursor: text;
+}
+
+.nav-categories ul li:hover {
+    background-color: #1a237e !important;
+}
+
+.dropdown-menu a:hover {
+    background: #014464 !important;
+}
+
+.nav-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 100px;
 }
