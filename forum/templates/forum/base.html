@@ -8,8 +8,12 @@
         <link rel="stylesheet" href="{% static 'forum/css/base.css' %}">
         <link rel="stylesheet" href="{% static 'forum/css/login.css' %}">
         <link rel="stylesheet" href="{% static 'forum/css/register.css' %}">
+        <script src="{% static 'forum/js/base.js' %}" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+
+    <main>
 
         <!-- Navbar -->
         <div class="navbar-fixed">
@@ -135,20 +139,22 @@
         {% endif %}
         
         <!-- Content -->
-        {% block content %}
-        {% endblock %}
-        
+        <div class="container"> 
+            {% block content %}
+            {% endblock %}
+        </div>
+       
+    </main>
+
         <!-- Footer -->
         <footer class="page-footer grey darken-4">
             <div class="footer-copyright grey darken-4">
                 <div class="container">
                     © 2019 All Rights Reserved OneTwenty Inc.
-                    <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/programatistisgr" target="blank">See our project here.</a>
+                    <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/programatistisgr" target="blank">See our project here.</a></div> 
                 </div>
             </div>
         </footer> 
-
-        <script src="{% static 'forum/js/base.js' %}"></script>
 
     </body>
 </html>
