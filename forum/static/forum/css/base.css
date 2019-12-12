@@ -57,6 +57,7 @@ li {
 
 .dropdown-content {
     height: auto !important;
+    overflow: hidden;
 }
 
 .dropdown-content li {
@@ -96,4 +97,29 @@ li {
 input:focus {
     border-bottom: 1px solid red !important;
     box-shadow: 0 1px 0 0 red !important;
+}
+
+nav {
+    z-index: -1;
+}
+
+.dropdown-content {
+    z-index: 1;
+}
+
+.search-bar{
+    position: absolute;
+    left: 45%;
+}
+
+.search-bar input, .sidenav-search-bar input{
+    color: grey;
+}
+
+.sidenav-search-bar .label-icon{
+    margin-top: 8px;
+}
+
+.sidenav-search-bar .close-button{
+    margin-top: 10px;
 }
