@@ -73,10 +73,6 @@ li {
     line-height: 45px;
 }
 
-.nav-categories > ul > li > a:hover {
-    cursor: text;
-}
-
 .nav-categories ul li:hover {
     background-color: #212121 !important;
 }
