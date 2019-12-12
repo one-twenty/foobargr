@@ -41,6 +41,11 @@
                         {% if user.is_authenticated %}
                             <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">{{ user.username }}<i 
                                 class="material-icons right">person</i></a></li>
+                            <ul id="profile-dropdown" class="dropdown-content">
+                                <li><a href="#!" class="black-text">Προφίλ</a></li>
+                                <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
+                                <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+                            </ul>
                         {% else %}
                             <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
                             <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
@@ -51,54 +56,25 @@
             </nav>
         </div>
 
-        <!-- Dropdown Profile Structure -->
-        <ul id="profile-dropdown" class="dropdown-content">
-            <li><a href="#!" class="black-text">Προφίλ</a></li>
-            <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
-            <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
-        </ul>
-
+     
         <!-- Categories Navbar -->
         <div class="navbar-fixed">
             <nav class="nav-extended nav-categories grey darken-3">
                 <ul id="nav-mobile" class="left hide-on-med-and-down nav-width">
-                        
-                    <li><a class="dropdown-trigger-categories" href="#programming-languages" data-target="profile-dropdown-categories-languages">Γλώσσες Προγραματισμού</a>
-                        <ul id="profile-dropdown-categories-languages" class="grey darken-3 dropdown-content">
-                            <li><a href="#!" class="white-text">Python</a></li>
-                            <li><a href="#!" class="white-text">C/C++</a></li>
-                            <li><a href="#!" class="white-text">Java</a></li>
-                        </ul>
-                    </li>
                     
-                    <li><a class="dropdown-trigger-categories" href="#web-development" data-target="profile-dropdown-categories-web">Web Development</a>
-                        <ul id="profile-dropdown-categories-web" class="grey darken-3 dropdown-content">
-                            <li><a href="#!" class="white-text">Front End</a></li>
-                            <li><a href="#!" class="white-text">Back End</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a class="dropdown-trigger-categories" href="#mobile-development" data-target="profile-dropdown-categories-mobile">Mobile Development</a>
-                        <ul id="profile-dropdown-categories-mobile" class="grey darken-3 dropdown-content">
-                            <li><a href="#!" class="white-text">Android</a></li>
-                            <li><a href="#!" class="white-text">iOS</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li><a class="dropdown-trigger-categories" href="#artificial-intelligence" data-target="profile-dropdown-categories-ai">Τεχνητή Νοημοσύνη</a>
-                        <ul id="profile-dropdown-categories-ai" class="grey darken-3 dropdown-content">
-                            <li><a href="#!" class="white-text">Machine Learning</a></li>
-                            <li><a href="#!" class="white-text">Deep Learning</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a class="dropdown-trigger-categories" href="#education" data-target="profile-dropdown-categories-education">Εκπαίδευση</a>
-                        <ul id="profile-dropdown-categories-education" class="grey darken-3 dropdown-content">
-                            <li><a href="#!" class="white-text">Πανεπιστήμιο</a></li>
-                            <li><a href="#!" class="white-text">Γενικό Λύκειο</a></li>
-                            <li><a href="#!" class="white-text">ΕΠΑΛ</a></li>
-                        </ul>
-                    </li>
+                    {% for category in categories %}
+                        {% if category.id != 0 and category.parent_category == None %}
+                            <li><a class="dropdown-trigger-categories" href="#{{category}}" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
+                                <ul id="dropdown-categories-{{category.id}}" class="grey darken-3 dropdown-content">
+                                    {% for subcategory in categories %}
+                                        {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
+                                            <li><a href="#{{category}}/{{subcategory}}" class="white-text">{{subcategory}}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
 
                 </ul>
             </nav>
@@ -107,47 +83,49 @@
         <!-- Sidenav -->
         <ul class="sidenav grey darken-3" id="mobile-links">
 
+            <li class="sidenav-search-bar">
+                <div class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required placeholder="Αναζήτηση">
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            
             {% if user.is_authenticated %}
                 <li><a class="dropdown-trigger white-text" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
                     class="material-icons white-text">person</i></a></li>
-                <li><div class="divider"></div></li>
+                    <ul id="profile-dropdown-sidenav" class="dropdown-content grey darken-3">
+                        <li><a href="#!" class="white-text">Προφίλ</a></li>
+                        <li><a href="#!" class="white-text">Ρυθμίσεις</a></li>
+                        <li><a class="white-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+                    </ul>
             {% else %}
                 <li><a class="white-text" href="{% url 'forum:login' %}">Σύνδεση</a></li>
                 <li><a class="white-text" href="{% url 'forum:register' %}">Εγγραφή</a></li>
             {% endif %}
 
-            <li class="sidenav-search-bar">
-                <div class="nav-wrapper">
-                <form>
-                    <div class="input-field">
-                        <input id="search" type="search" required placeholder="Αναζήτηση">
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                    </div>
-                </form>
-                </div>
+            <li>
+                <div class="divider"></div>
             </li>
 
-            <li><a class="dropdown-trigger white-text" href="#!" data-target="languages-dropdown-sidenav">Γλώσσες Προγραματισμού</a></li>
-            <li><a class="white-text" href="#">Web Development</a></li>
-            <li><a class="white-text" href="#">Mobile Development</a></li>
-            <li><a class="white-text" href="#">Τεχνητή Νοημοσύνη</a></li>
-            <li><a class="white-text" href="#">Εκπαίδευση</a></li>
+            {% for category in categories %}
+                {% if category.id != 0 and category.parent_category == None %}
+                    <li><a class="dropdown-trigger white-text" href="#{{category}}" data-target="sidenav-dropdown-categories-{{category.id}}">{{category}}</a>
+                        <ul id="sidenav-dropdown-categories-{{category.id}}" class="dropdown-content grey darken-3">
+                            {% for subcategory in categories %}
+                                {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
+                                        <li><a href="#{{category}}/{{subcategory}}" class="white-text">{{subcategory}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
             
-        </ul>
-
-        <!-- Dropdown Profile Sidenav Structure -->
-        <ul id="profile-dropdown-sidenav" class="dropdown-content grey darken-3">
-            <li><a href="#!" class="white-text">Προφίλ</a></li>
-            <li><a href="#!" class="white-text">Ρυθμίσεις</a></li>
-            <li><a class="white-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
-        </ul>
-
-        <!-- Dropdown Languages Sidenav Structure -->
-        <ul id="languages-dropdown-sidenav" class="dropdown-content grey darken-3">
-            <li><a href="#!" class="white-text">Python</a></li>
-            <li><a href="#!" class="white-text">C/C++</a></li>
-            <li><a href="#!" class="white-text">Java</a></li>
         </ul>
 
         <!-- Error Messages -->
