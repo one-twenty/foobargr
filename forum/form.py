@@ -15,8 +15,8 @@ class RegisterForm(UserCreationForm):
     password2 = forms.CharField(label='Επιβεβαίωση Κωδικού', widget=forms.PasswordInput)
     error_messages = {
         'password_mismatch': 'Εισάγετε ίδιους Κωδικούς',
-        'duplicate_username': 'Το Όνομα Χρήστη χρησιμοποιηείται ήδη',
-        'duplicate_email': 'Το Email χρησιμοποιηείται ήδη',
+        'duplicate_username': 'Το Όνομα Χρήστη χρησιμοποιείται ήδη',
+        'duplicate_email': 'Το Email χρησιμοποιείται ήδη',
     }
     
      
