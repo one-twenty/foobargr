@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="row register-card">
-    <form class="col s30" method="POST">
+    <form method="POST">
         {% csrf_token %} 
         {% for field in form %}
         <div class="row">

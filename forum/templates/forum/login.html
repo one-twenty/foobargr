@@ -7,15 +7,15 @@
             {% csrf_token %}
             {% for field in form %}
                 <div class="row">
-                    <div class="input-field">
+                    <div class="input-field"> 
                         {{field}}
                         <label for="{{field.id_for_label}}">{{field.label_tag}}</label>
                     </div>
                 </div>
             {% endfor %}
-            <button type="submit" class="btn red">Συνδεση</button>
+            <button type="submit" class="btn red login-button">Συνδεση</button>
             <a  class="btn red" href="{% url 'forum:register' %}">Εγγραφη</a> 
-            <p><a class="forgot-password" href="">Ξέχασα τον κωδικό μου</a> </p>
+            <p><a class="forgot-password" href="">Ξέχασα τον κωδικό μου</a></p>
         </form>
     </div>
     
