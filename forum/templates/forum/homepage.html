@@ -4,47 +4,49 @@
 
 <h2>Τελευταία Θέματα</h2>
 
-<div class="topic-card">
-    <div class="col s12 m7">
-        <div class="card horizontal">
-            <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6" />
-            </div>
-            <div class="category">
-                <p>
-                    Γλώσσες Προγραμματισμού > Python
-                </p>
-            </div>
-            <div class="user">
-                <p>
-                    <a href="">Splanis</a> <br>
-                    Admin <br>
-                    Μηνύματα: 666
-                </p>
-            </div>
-            <div class="card-stacked">
-                <div class="datetime-published">
-                    <p>Τρίτη 3/12/2019 13:16</p>
+{% for topic in topics %}
+    <div class="topic-card">
+        <div class="col s12 m7">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src="https://lorempixel.com/100/190/nature/6" />
                 </div>
-                <div class="post-title">
-                    This is a fucking test topic
-                </div>
-                <div class="card-content">
+                <div class="category">
                     <p>
-                        I am a very simple card. I am good at containing small
-                        bits of information.I am a very simple card. I am good at containing small
-                        bits of information.I am a very simple card. I am good at containing small
-                        bits of information.I am a very simple card. I am good at containing small
-                        bits of information.
+                        {{topic.category}}
                     </p>
                 </div>
-                <div class="card-action">
-                    <a href="#">Εμφάνιση Θέματος</a>
-                    <a href="#">Απάντηση</a>
+                <div class="user">
+                    <p>
+                        <a href="">{{topic.user}}</a> <br>
+                        Admin <br>
+                        Μηνύματα: 666
+                    </p>
+                </div>
+                <div class="card-stacked">
+                    <div class="datetime-published">
+                        <p>{{topic.datetime}}</p>
+                    </div>
+                    <div class="post-title">
+                        {{topic.title}}
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            {% if topic.content|length > 140 %}
+                                {{topic.content|slice:137}}...
+                            {% else %}
+                                {{topic.content}}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">Εμφάνιση Θέματος</a>
+                        <a href="#">Απάντηση</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+{% endfor %}
 
 {% endblock content %}

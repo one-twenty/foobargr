@@ -4,10 +4,11 @@ from django.contrib.auth import login, authenticate, logout
 from django.http import HttpRequest
 from .form import RegisterForm, LoginForm
 from django.contrib import messages
+from .models import Topic
 
 
 def homepage(request):
-    return render(request, 'forum/homepage.html')
+    return render(request, 'forum/homepage.html', {'topics': Topic.objects.all})
 
 
 def register(request: HttpRequest):
