@@ -81,6 +81,18 @@ li {
     background: #212121 !important;
 }
 
+.dropdown-content li:hover {
+    background: #212121 !important;
+}
+
+.dropdown-hover:hover {
+    background: #212121 !important;
+}
+
+.dropdown-trigger: hover{
+    background: #212121 !important;
+}
+
 .nav-wrapper {
     padding: 0 !important;
     margin: 0 !important;

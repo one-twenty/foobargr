@@ -96,7 +96,7 @@
             </li>
             
             {% if user.is_authenticated %}
-                <li><a class="dropdown-trigger white-text" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
+                <li><a class="dropdown-trigger dropdown-hover white-text" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
                     class="material-icons white-text">person</i></a></li>
                     <ul id="profile-dropdown-sidenav" class="dropdown-content grey darken-3">
                         <li><a href="#!" class="white-text">Προφίλ</a></li>
@@ -114,7 +114,7 @@
 
             {% for category in categories %}
                 {% if category.id != 0 and category.parent_category == None %}
-                    <li><a class="dropdown-trigger white-text" href="#{{category}}" data-target="sidenav-dropdown-categories-{{category.id}}">{{category}}</a>
+                    <li><a class="dropdown-trigger dropdown-hover white-text" href="#{{category}}" data-target="sidenav-dropdown-categories-{{category.id}}">{{category}}</a>
                         <ul id="sidenav-dropdown-categories-{{category.id}}" class="dropdown-content grey darken-3">
                             {% for subcategory in categories %}
                                 {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
