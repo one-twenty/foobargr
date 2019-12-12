@@ -12,9 +12,11 @@
     <body>
 
         <!-- Navbar -->
-        <nav class="nav-extended indigo">
+        <nav class="nav-extended grey darken-4">
             <div class="nav-wrapper">
-                <a href="{% url 'forum:homepage' %}" class="brand-logo">programatistis.gr</a>
+                {% comment %} <a href="{% url 'forum:homepage' %}" class="brand-logo">programatistis.gr</a> {% endcomment %}
+                <a href="{% url 'forum:homepage' %}" class="brand-logo"><img src="{% static 'assets/main-logo.png' %}" class="main-logo"></a>
+
                 <a href="#" data-target="mobile-links" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     {% if user.is_authenticated %}
@@ -30,46 +32,46 @@
 
         <!-- Dropdown Profile Structure -->
         <ul id="profile-dropdown" class="dropdown-content">
-                <li><a href="#!" class="deep-purple-text">Προφίλ</a></li>
-                <li><a href="#!" class="deep-purple-text">Ρυθμίσεις</a></li>
-                <li><a class="deep-purple-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+                <li><a href="#!" class="black-text">Προφίλ</a></li>
+                <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
+                <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
         </ul>
 
         <!-- Categories Navbar -->
-        <nav class="nav-extended nav-categories indigo darken-3">
+        <nav class="nav-extended nav-categories grey darken-3">
                     <ul id="nav-mobile" class="left hide-on-med-and-down nav-width">
                             
                             <li><a class="dropdown-trigger-categories" href="#programming-languages" data-target="profile-dropdown-categories-languages">Γλώσσες Προγραματισμού</a>
-                                <ul id="profile-dropdown-categories-languages" class="indigo darken-3 dropdown-content">
-                                        <li><a href="#!" class="white-text waves-effect waves-purple">Python</a></li>
+                                <ul id="profile-dropdown-categories-languages" class="grey darken-3 dropdown-content">
+                                        <li><a href="#!" class="white-text">Python</a></li>
                                         <li><a href="#!" class="white-text">C/C++</a></li>
                                         <li><a href="#!" class="white-text">Java</a></li>
                                 </ul>
                             </li>
                             
                             <li><a class="dropdown-trigger-categories" href="#web-development" data-target="profile-dropdown-categories-web">Web Development</a>
-                                <ul id="profile-dropdown-categories-web" class="indigo darken-3 dropdown-content">
+                                <ul id="profile-dropdown-categories-web" class=" grey darken-3 dropdown-content">
                                         <li><a href="#!" class="white-text">Front End</a></li>
                                         <li><a href="#!" class="white-text">Back End</a></li>
                                 </ul>
                             </li>
 
                             <li><a class="dropdown-trigger-categories" href="#mobile-development" data-target="profile-dropdown-categories-mobile">Mobile Development</a>
-                                <ul id="profile-dropdown-categories-mobile" class="indigo darken-3 dropdown-content">
+                                <ul id="profile-dropdown-categories-mobile" class=" grey darken-3 dropdown-content">
                                         <li><a href="#!" class="white-text">Android</a></li>
                                         <li><a href="#!" class="white-text">iOS</a></li>
                                 </ul>
                             </li>
                             
                             <li><a class="dropdown-trigger-categories" href="#artificial-intelligence" data-target="profile-dropdown-categories-ai">Τεχνητή Νοημοσύνη</a>
-                                <ul id="profile-dropdown-categories-ai" class="indigo darken-3 dropdown-content">
+                                <ul id="profile-dropdown-categories-ai" class=" grey darken-3 dropdown-content">
                                         <li><a href="#!" class="white-text">Machine Learning</a></li>
                                         <li><a href="#!" class="white-text">Deep Learning</a></li>
                                 </ul>
                             </li>
 
                             <li><a class="dropdown-trigger-categories" href="#education" data-target="profile-dropdown-categories-education">Εκπαίδευση</a>
-                                <ul id="profile-dropdown-categories-education" class="indigo darken-3 dropdown-content">
+                                <ul id="profile-dropdown-categories-education" class="grey darken-3 dropdown-content">
                                         <li><a href="#!" class="white-text">Πανεπιστήμιο</a></li>
                                         <li><a href="#!" class="white-text">Γενικό Λύκειο</a></li>
                                         <li><a href="#!" class="white-text">ΕΠΑΛ</a></li>
@@ -86,29 +88,29 @@
                     class="material-icons right">person</i></a></li>
                 <li><div class="divider"></div></li>
             {% else %}
-                <li><a class="deep-purple-text" href="{% url 'forum:login' %}">Σύνδεση</a></li>
-                <li><a class="deep-purple-text" href="{% url 'forum:register' %}">Εγγραφή</a></li>
+                <li><a class="black-text" href="{% url 'forum:login' %}">Σύνδεση</a></li>
+                <li><a class="black-text" href="{% url 'forum:register' %}">Εγγραφή</a></li>
             {% endif %}
             <li><a class="dropdown-trigger" href="#!" data-target="languages-dropdown-sidenav">Γλώσσες Προγραματισμού</a></li>
-                <li><a class="deep-purple-text" href="#">Γλώσσες Προγραματισμού</a></li>
-                <li><a class="deep-purple-text" href="#">Web Development</a></li>
-                <li><a class="deep-purple-text" href="#">Mobile Development</a></li>
-                <li><a class="deep-purple-text" href="#">Τεχνητή Νοημοσύνη</a></li>
-                <li><a class="deep-purple-text" href="#">Εκπαίδευση</a></li>
+                <li><a class="black-text" href="#">Γλώσσες Προγραματισμού</a></li>
+                <li><a class="black-text" href="#">Web Development</a></li>
+                <li><a class="black-text" href="#">Mobile Development</a></li>
+                <li><a class="black-text" href="#">Τεχνητή Νοημοσύνη</a></li>
+                <li><a class="black-text" href="#">Εκπαίδευση</a></li>
         </ul>
 
         <!-- Dropdown Profile Sidenav Structure -->
         <ul id="profile-dropdown-sidenav" class="dropdown-content">
-                <li><a href="#!" class="deep-purple-text">Προφίλ</a></li>
-                <li><a href="#!" class="deep-purple-text">Ρυθμίσεις</a></li>
-                <li><a class="deep-purple-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+                <li><a href="#!" class="black-text">Προφίλ</a></li>
+                <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
+                <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
         </ul>
 
         <!-- Dropdown Languages Sidenav Structure -->
         <ul id="languages-dropdown-sidenav" class="dropdown-content">
-                <li><a href="#!" class="deep-purple-text">Python</a></li>
-                <li><a href="#!" class="deep-purple-text">C/C++</a></li>
-                <li><a href="#!" class="deep-purple-text">Java</a></li>
+                <li><a href="#!" class="black-text">Python</a></li>
+                <li><a href="#!" class="black-text">C/C++</a></li>
+                <li><a href="#!" class="black-text">Java</a></li>
         </ul>
 
         <!-- Error Messages -->
@@ -130,8 +132,8 @@
         {% block content %}
         {% endblock %}
 		
-        <footer class="page-footer indigo">
-            <div class="footer-copyright indigo">
+        <footer class="page-footer grey darken-4">
+            <div class="footer-copyright grey darken-4">
                 <div class="container">
                     © 2019 All Rights Reserved OneTwenty Inc.
                     <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/programatistisgr" target="blank">See our project here.</a>
