@@ -1,0 +1,70 @@
+h2 {
+    text-align: center;
+    margin-top: -10px;
+    color: white;
+}
+
+.card {
+    border-radius: 20px;
+    padding: 5px;
+    animation: topics-show 1.5s;
+    background: #212121 !important;
+    color: white;
+}
+
+.card-action {
+    padding: 0;
+    margin: 0;
+}
+
+.card-action a {
+    color: red !important;
+    text-transform: none !important;
+}
+
+.topic-card {
+    border-radius: 10px;
+}
+
+.topic-card img {
+    border-radius: 50% !important;
+    height: 120px !important;
+    width: 120px !important;
+}
+
+.datetime-published {
+    margin-right: 10px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.user {
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 105px;
+    text-align: center;
+}
+
+.user a {
+    font-size: 20px;
+}
+
+.post-title {
+    font-size: 2rem;
+    margin-left: 20px;
+}
+
+.category {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 15px;
+}
+
+@keyframes topics-show {
+    from {
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+}
