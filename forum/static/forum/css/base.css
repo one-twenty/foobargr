@@ -17,10 +17,10 @@ main {
 
 @media only screen and (min-width: 601px) {
     #toast-container {
-        position: relative;
+        position: absolute;
         width: 22vh;
-        left: 50%;
-        top: 50%;
+        right: 0%;
+        top: 10%;
         text-align: center;
     }
 
@@ -99,27 +99,20 @@ input:focus {
     box-shadow: 0 1px 0 0 red !important;
 }
 
-nav {
-    z-index: -1;
-}
-
-.dropdown-content {
-    z-index: 1;
-}
-
-.search-bar{
+.search-bar {
     position: absolute;
     left: 45%;
 }
 
-.search-bar input, .sidenav-search-bar input{
+.search-bar input,
+.sidenav-search-bar input {
     color: grey;
 }
 
-.sidenav-search-bar .label-icon{
+.sidenav-search-bar .label-icon {
     margin-top: 8px;
 }
 
-.sidenav-search-bar .close-button{
+.sidenav-search-bar .close-button {
     margin-top: 10px;
 }
