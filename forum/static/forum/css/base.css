@@ -1,6 +1,6 @@
 html,
 body {
-    /* background-color: #151515; */
+    background-color: #cacaca;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -15,35 +15,40 @@ main {
     flex: 1 0 auto;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
-@media only screen and (min-width: 601px) {
-    #toast-container {
-        position: absolute;
-        left: 44%;
-        top: 14%;
-        text-align: center;
-        width: 200px;
-    }
-}
-/* 
 @media only screen and (min-width: 601px) {
     #toast-container {
         position: relative;
-        transform: translate(1500px, 20px);
+        width: 22vh;
+        left: 50%;
+        top: 50%;
         text-align: center;
-        width: 240px;
     }
-} */
 
-.main-logo {
-    margin-left: 10px;
-    height: 7vh;
+    .main-logo {
+        margin-left: 10px;
+        height: 6.5vh;
+    }
+
+    .brand-logo {
+        height: 6.5vh;
+    }
+}
+
+@media only screen and (max-width: 601px) {
+    #toast-container {
+        position: absolute;
+        top: 0%;
+        margin-top: 50px;
+        width: 60%;
+    }
+    .main-logo {
+        margin: 8px;
+        height: 50px;
+    }
+
+    .brand-logo {
+        height: 50px;
+    }
 }
 
 li {
@@ -82,5 +87,13 @@ li {
 .nav-wrapper {
     padding: 0 !important;
     margin: 0 !important;
-    height: 100px;
+}
+
+.input-field label {
+    color: rgb(36, 36, 36);
+}
+
+input:focus {
+    border-bottom: 1px solid red !important;
+    box-shadow: 0 1px 0 0 red !important;
 }
