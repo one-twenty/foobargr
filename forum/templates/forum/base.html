@@ -92,35 +92,34 @@
         </div>
         
         <!-- Sidenav -->
-        <ul class="sidenav" id="mobile-links">
+        <ul class="sidenav grey darken-3" id="mobile-links">
             {% if user.is_authenticated %}
-                <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
-                    class="material-icons right">person</i></a></li>
+                <li><a class="dropdown-trigger white-text" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
+                    class="material-icons">person</i></a></li>
                 <li><div class="divider"></div></li>
             {% else %}
-                <li><a class="black-text" href="{% url 'forum:login' %}">Σύνδεση</a></li>
-                <li><a class="black-text" href="{% url 'forum:register' %}">Εγγραφή</a></li>
+                <li><a class="white-text" href="{% url 'forum:login' %}">Σύνδεση</a></li>
+                <li><a class="white-text" href="{% url 'forum:register' %}">Εγγραφή</a></li>
             {% endif %}
-            <li><a class="dropdown-trigger" href="#!" data-target="languages-dropdown-sidenav">Γλώσσες Προγραματισμού</a></li>
-                <li><a class="black-text" href="#">Γλώσσες Προγραματισμού</a></li>
-                <li><a class="black-text" href="#">Web Development</a></li>
-                <li><a class="black-text" href="#">Mobile Development</a></li>
-                <li><a class="black-text" href="#">Τεχνητή Νοημοσύνη</a></li>
-                <li><a class="black-text" href="#">Εκπαίδευση</a></li>
+            <li><a class="dropdown-trigger white-text" href="#!" data-target="languages-dropdown-sidenav">Γλώσσες Προγραματισμού</a></li>
+                <li><a class="white-text" href="#">Web Development</a></li>
+                <li><a class="white-text" href="#">Mobile Development</a></li>
+                <li><a class="white-text" href="#">Τεχνητή Νοημοσύνη</a></li>
+                <li><a class="white-text" href="#">Εκπαίδευση</a></li>
         </ul>
 
         <!-- Dropdown Profile Sidenav Structure -->
-        <ul id="profile-dropdown-sidenav" class="dropdown-content">
-            <li><a href="#!" class="black-text">Προφίλ</a></li>
-            <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
-            <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+        <ul id="profile-dropdown-sidenav" class="dropdown-content grey darken-3">
+            <li><a href="#!" class="white-text">Προφίλ</a></li>
+            <li><a href="#!" class="white-text">Ρυθμίσεις</a></li>
+            <li><a class="white-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
         </ul>
 
         <!-- Dropdown Languages Sidenav Structure -->
-        <ul id="languages-dropdown-sidenav" class="dropdown-content">
-            <li><a href="#!" class="black-text">Python</a></li>
-            <li><a href="#!" class="black-text">C/C++</a></li>
-            <li><a href="#!" class="black-text">Java</a></li>
+        <ul id="languages-dropdown-sidenav" class="dropdown-content grey darken-3">
+            <li><a href="#!" class="white-text">Python</a></li>
+            <li><a href="#!" class="white-text">C/C++</a></li>
+            <li><a href="#!" class="white-text">Java</a></li>
         </ul>
 
         <!-- Error Messages -->
