@@ -38,8 +38,8 @@ h2 {
 
 .datetime-published {
     padding: 20px;
-    font-size: 14px;
-    margin-top: -10px;
+    font-size: 13px;
+    margin-top: -3px;
 }
 
 .user {
@@ -79,7 +79,7 @@ h2 {
     position: absolute;
     margin-top: 30px;
     margin-left: -4px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .topic-action {
@@ -91,6 +91,11 @@ h2 {
 
 .btn{
     border-radius: 30px;
+}
+
+.btn:hover {
+    transition: ease-in 0.1s;
+    transform: scale(1.1);
 }
 
 .topic-action a {
