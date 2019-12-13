@@ -73,24 +73,17 @@ li {
     line-height: 45px;
 }
 
+.dropdown-trigger:hover,
+.catergories-tabs:hover,
+.dropdown-hover:hover,
+.dropdown-content li:hover,
+.dropdown-menu a:hover,
 .nav-categories ul li:hover {
-    background-color: #212121 !important;
-}
-
-.dropdown-menu a:hover {
     background: #212121 !important;
 }
 
-.dropdown-content li:hover {
-    background: #212121 !important;
-}
-
-.dropdown-hover:hover {
-    background: #212121 !important;
-}
-
-.dropdown-trigger: hover{
-    background: #212121 !important;
+.profile-dropdown li:hover {
+    background: #9e9e9e !important;
 }
 
 .nav-wrapper {
@@ -110,6 +103,7 @@ input:focus {
 .search-bar {
     position: absolute;
     left: 45%;
+    transform: scale(0.8);
 }
 
 .search-bar input,
