@@ -41,7 +41,7 @@
                         {% if user.is_authenticated %}
                             <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">{{ user.username }}<i 
                                 class="material-icons right">person</i></a></li>
-                            <ul id="profile-dropdown" class="dropdown-content profile-dropdown">
+                            <ul id="profile-dropdown" class="dropdown-content dropdown-profile">
                                 <li><a href="#!" class="black-text">Προφίλ</a></li>
                                 <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
                                 <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
@@ -50,40 +50,16 @@
                             <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
                             <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
                         {% endif %}
+
                     </ul>
                     
                 </div>  
-                <div class="nav-content">
-                    <ul id="nav-mobile" class="left hide-on-med-and-down nav-categories grey darken-3 nav-width">
-                    
-                        {% for category in categories %}
-                            {% if category.id != 0 and category.parent_category == None %}
-                                <li class="catergories-tabs"><a class="dropdown-trigger-categories" href="#{{category}}" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
-                                    <ul id="dropdown-categories-{{category.id}}" class="grey darken-3 dropdown-content">
-                                        {% for subcategory in categories %}
-                                            {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
-                                                <li><a href="#{{category}}/{{subcategory}}" class="white-text">{{subcategory}}</a></li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </li>
-                            {% endif %}
-                        {% endfor %}
-    
-                    </ul>
-                </div>
-            </nav>
-        </div>
-
-     
-        <!-- Categories Navbar -->
-        <!-- <div class="navbar-fixed">
-            <nav class="nav-extended nav-categories grey darken-3">
-                <ul id="nav-mobile" class="left hide-on-med-and-down nav-width">
-                    
+            <div class="nav-content">
+                <ul id="nav-mobile" class="left hide-on-med-and-down nav-categories grey darken-3 nav-width">
+                
                     {% for category in categories %}
                         {% if category.id != 0 and category.parent_category == None %}
-                            <li><a class="dropdown-trigger-categories" href="#{{category}}" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
+                            <li class="catergories-tabs"><a class="dropdown-trigger-categories" href="#{{category}}" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
                                 <ul id="dropdown-categories-{{category.id}}" class="grey darken-3 dropdown-content">
                                     {% for subcategory in categories %}
                                         {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
@@ -94,11 +70,13 @@
                             </li>
                         {% endif %}
                     {% endfor %}
-
+    
                 </ul>
-            </nav>
-        </div> -->
-        
+            </div>
+        </nav>
+        </div>  
+  
+
         <!-- Sidenav -->
         <ul class="sidenav grey darken-3" id="mobile-links">
 
@@ -171,7 +149,7 @@
     </main>
 
         <!-- Footer -->
-        <footer class="page-footer grey darken-4">
+        <footer>
             <div class="footer-copyright grey darken-4">
                 <div class="container">
                     © 2019 All Rights Reserved OneTwenty Inc.

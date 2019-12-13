@@ -82,7 +82,12 @@ li {
     background: #212121 !important;
 }
 
-.profile-dropdown li:hover {
+.footer-copyright{
+    padding: 10px;
+    color: white;
+}
+
+.dropdown-profile li:hover {
     background: #9e9e9e !important;
 }
 
@@ -103,7 +108,6 @@ input:focus {
 .search-bar {
     position: absolute;
     left: 45%;
-    transform: scale(0.8);
 }
 
 .search-bar input,
