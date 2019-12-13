@@ -20,7 +20,8 @@ def register(request: HttpRequest):
             login(request, user)
             return redirect('forum:homepage')
         else:
-            messages.error(request, form.errors)
+            for value in form.errors:
+                messages.error(request, form.errors[value])
     
     form = RegisterForm
     return render(request, 'forum/register.html', {'form': form})
