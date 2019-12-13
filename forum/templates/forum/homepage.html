@@ -13,7 +13,9 @@
                 </div>
                 <div class="category">
                     <p>
-                        {{topic.category}}
+                        <a href="#">Web Development</a>  
+                        >
+                        <a href="#">{{topic.category}}</a>        
                     </p>
                 </div>
                 <div class="user">
@@ -32,16 +34,16 @@
                     </div>
                     <div class="card-content">
                         <p>
-                            {% if topic.content|length > 140 %}
-                                {{topic.content|slice:137}}...
+                            {% if topic.content|length > 120 %}
+                                {{topic.content|slice:117}}...
                             {% else %}
                                 {{topic.content}}
                             {% endif %}
                         </p>
                     </div>
-                    <div class="card-action">
-                        <a href="#">Εμφάνιση Θέματος</a>
-                        <a href="#">Απάντηση</a>
+                    <div class="topic-action">
+                        <a class="btn red" href="#">Εμφάνιση Θέματος</a>
+                        <a class="btn red" href="#">Απάντηση</a>
                     </div>
                 </div>
             </div>
