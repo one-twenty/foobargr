@@ -1,5 +1,11 @@
 {% extends 'forum/base.html' %} 
 
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'forum/css/register.css' %}">
+{% endblock styles %}
+
+
 {% block content %}
 
 <div class="row register-card">
