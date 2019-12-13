@@ -3,57 +3,129 @@
     <head>
         {% load static %}
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <link rel="stylesheet" href="{% static 'forum/css/base.css' %}">
         <link rel="stylesheet" href="{% static 'forum/css/login.css' %}">
         <link rel="stylesheet" href="{% static 'forum/css/register.css' %}">
+        <script src="{% static 'forum/js/base.js' %}" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <!-- Dropdown Profile Structure -->
-        <ul id="profile-dropdown" class="dropdown-content">
-            <li><a href="#!" class="deep-purple-text">Προφιλ</a></li>
-            <li><a href="#!" class="deep-purple-text">Ρυθμίσεις</a></li>
-            <li><a class="deep-purple-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
-        </ul> 
-        <nav class="nav-extended deep-purple">
-            <div class="nav-wrapper">
-                <a href="{% url 'forum:homepage' %}" class="brand-logo">programatistis.gr</a>
-                <a href="#" data-target="mobile-links" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    {% if user.is_authenticated %}
-                        <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">{{ user.username }}<i 
-                            class="material-icons right">keyboard_arrow_down</i></a></li>
-                    {% else %}
-                        <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
-                        <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
-                    {% endif %}
-                </ul>
-            </div>
+
+    <main>
+
+        <!-- Navbar -->
+        <div class="navbar-fixed">
+            <nav class="nav-extended grey darken-4">
+                <div class="nav-wrapper">
+
+                    <a href="{% url 'forum:homepage' %}" class="brand-logo"><img src="{% static 'assets/main-logo.png' %}" class="main-logo"></a>
+
+                    <a href="#" data-target="mobile-links" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        
+                        <li class="search-bar">
+                            <div class="nav-wrapper">
+                                <form>
+                                    <div class="input-field">
+                                        <input id="search" type="search" required placeholder="Αναζήτηση">
+                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                        <i class="material-icons">close</i>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                            
+                        {% if user.is_authenticated %}
+                            <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">{{ user.username }}<i 
+                                class="material-icons right">person</i></a></li>
+                            <ul id="profile-dropdown" class="dropdown-content dropdown-profile">
+                                <li><a href="#!" class="black-text">Προφίλ</a></li>
+                                <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
+                                <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+                            </ul>
+                        {% else %}
+                            <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
+                            <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
+                        {% endif %}
+
+                    </ul>
+                    
+                </div>  
             <div class="nav-content">
-                <ul class="tabs tabs-transparent">
-                    <li class="tab"><a href="#test1">Test 1</a></li>
-                    <li class="tab"><a href="#test2">Test 2</a></li>
-                    <li class="tab"><a href="#test4">Test 4</a></li>
-                    <li class="tab"><a href="#test4">Test 4</a></li>
-                    <li class="tab"><a href="#test4">Test 4</a></li>
+                <ul id="nav-mobile" class="left hide-on-med-and-down nav-categories grey darken-3 nav-width">
+                
+                    {% for category in categories %}
+                        {% if category.id != 0 and category.parent_category == None %}
+                            <li class="catergories-tabs"><a class="dropdown-trigger-categories" href="#{{category}}" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
+                                <ul id="dropdown-categories-{{category.id}}" class="grey darken-3 dropdown-content">
+                                    {% for subcategory in categories %}
+                                        {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
+                                            <li><a href="#{{category}}/{{subcategory}}" class="white-text">{{subcategory}}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+    
                 </ul>
             </div>
         </nav>
+        </div>  
+  
 
-        <ul class="sidenav" id="mobile-links">
+        <!-- Sidenav -->
+        <ul class="sidenav grey darken-3" id="mobile-links">
+
+            <li class="sidenav-search-bar">
+                <div class="nav-wrapper">
+                    <form>
+                        <div class="input-field">
+                            <input id="search" type="search" required placeholder="Αναζήτηση">
+                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                            <i class="search-close-button material-icons">close</i>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            
             {% if user.is_authenticated %}
-                <li><a href="#!" class="deep-purple-text">{{user.username}}</a></li>
-                <li><a href="#!" class="deep-purple-text">Ρυθμίσεις</a></li>
-                <li><a class="deep-purple-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+                <li><a class="dropdown-trigger dropdown-hover white-text" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
+                    class="material-icons white-text">person</i></a></li>
+                    <ul id="profile-dropdown-sidenav" class="dropdown-content grey darken-3">
+                        <li><a href="#!" class="white-text">Προφίλ</a></li>
+                        <li><a href="#!" class="white-text">Ρυθμίσεις</a></li>
+                        <li><a class="white-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+                    </ul>
             {% else %}
-                <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
-                <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
+                <li><a class="white-text" href="{% url 'forum:login' %}">Σύνδεση</a></li>
+                <li><a class="white-text" href="{% url 'forum:register' %}">Εγγραφή</a></li>
             {% endif %}
+
+            <li>
+                <div class="divider"></div>
+            </li>
+
+            {% for category in categories %}
+                {% if category.id != 0 and category.parent_category == None %}
+                    <li><a class="dropdown-trigger dropdown-hover white-text" href="#{{category}}" data-target="sidenav-dropdown-categories-{{category.id}}">{{category}}</a>
+                        <ul id="sidenav-dropdown-categories-{{category.id}}" class="dropdown-content grey darken-3">
+                            {% for subcategory in categories %}
+                                {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
+                                        <li><a href="#{{category}}/{{subcategory}}" class="white-text">{{subcategory}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            
         </ul>
 
+        <!-- Error Messages -->
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'success' %}
@@ -68,36 +140,23 @@
             {% endfor %}
         {% endif %}
         
+        <!-- Content -->
+        <div class="container"> 
+            {% block content %}
+            {% endblock %}
+        </div>
+       
+    </main>
 
-        {% block content %}
-        {% endblock %}
-		
-        <footer class="page-footer deep-purple">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                        <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
+        <!-- Footer -->
+        <footer class="page-footer grey darken-4">
+            <div class="footer-copyright grey darken-4">
                 <div class="container">
                     © 2019 All Rights Reserved OneTwenty Inc.
-                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                    <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/programatistisgr" target="blank">See our project here.</a></div> 
                 </div>
             </div>
         </footer> 
 
-    <script src="{% static 'forum/js/base.js' %}"></script>
     </body>
 </html>
