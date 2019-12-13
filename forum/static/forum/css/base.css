@@ -27,6 +27,7 @@ main {
     .main-logo {
         margin-left: 10px;
         height: 6.5vh;
+        margin: 3px;
     }
 
     .brand-logo {
@@ -42,8 +43,9 @@ main {
         width: 60%;
     }
     .main-logo {
-        margin: 8px;
+        margin: 5px;
         height: 50px;
+        /* margin-bottom: 10px; */
     }
 
     .brand-logo {
