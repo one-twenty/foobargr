@@ -95,10 +95,10 @@ input:focus {
 @media only screen and (min-width: 601px) {
     #toast-container {
         position: absolute;
-        width: 22vh;
         right: 0%;
         top: 10%;
         text-align: center;
+        padding: 5px;
     }
 
     .main-logo {
@@ -117,7 +117,8 @@ input:focus {
         position: absolute;
         top: 0%;
         margin-top: 50px;
-        width: 60%;
+        width: 200px;
+        padding: 0 50px 0 50px;
     }
     .main-logo {
         margin: 5px;
@@ -137,3 +138,4 @@ input:focus {
         text-align: center !important;
     }
 }
+
