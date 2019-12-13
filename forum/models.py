@@ -4,8 +4,9 @@ from datetime import datetime
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    url = models.CharField(max_length=200, blank=True, unique=True)
     parent_category = models.ForeignKey('self', null=True, blank=True, default=None, on_delete=models.SET_DEFAULT)
-
+    
     class Meta:
         verbose_name_plural = 'Categories'
 
