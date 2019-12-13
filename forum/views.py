@@ -62,6 +62,6 @@ def category_request(request, category):
     try:
         cat = Category.objects.get(url=category)
         topics = Topic.objects.filter(category=cat.id)
-        return render(request, 'forum/category.html', {'topics': topics})
+        return render(request, 'forum/category.html', {'category': cat, 'topics': topics})
     except Category.DoesNotExist:
         return render(request, 'forum/404.html')
