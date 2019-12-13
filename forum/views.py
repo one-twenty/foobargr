@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.http import HttpRequest
 from .form import RegisterForm, LoginForm
 from django.contrib import messages
+from .models import Category, Topic
 
 
 def homepage(request):
@@ -53,5 +54,14 @@ def login_request(request: HttpRequest):
                 
 
 def error_404(request, exception):
-        data = {}
-        return render(request,'forum/404.html', data)
+    data = {}
+    return render(request,'forum/404.html', data)
+
+
+def category_request(request, category):
+    try:
+        cat = Category.objects.get(url=category)
+        topics = Topic.objects.filter(category=cat.id)
+        return render(request, 'forum/category.html', {'topics': topics})
+    except Category.DoesNotExist:
+        return render(request, 'forum/404.html')

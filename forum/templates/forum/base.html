@@ -59,11 +59,11 @@
                 
                     {% for category in categories %}
                         {% if category.id != 0 and category.parent_category == None %}
-                            <li class="catergories-tabs"><a class="dropdown-trigger-categories" href="#{{category}}" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
+                            <li class="catergories-tabs"><a class="dropdown-trigger-categories" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
                                 <ul id="dropdown-categories-{{category.id}}" class="grey darken-3 dropdown-content">
                                     {% for subcategory in categories %}
                                         {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
-                                            <li><a href="#{{category}}/{{subcategory}}" class="white-text">{{subcategory}}</a></li>
+                                            <li><a href="{% url 'forum:category' subcategory.url %}" class="white-text">{{subcategory}}</a></li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
