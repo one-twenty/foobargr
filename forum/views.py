@@ -75,11 +75,10 @@ def create_topic(request):
                 title = form.cleaned_data.get('title')
                 category = form.cleaned_data.get('category')
                 content = form.cleaned_data.get('content')
-                user = request.user
                 form = form.save()
                 messages.success(request, 'Το θέμα σας δημιουργήθηκε')
                 return redirect('forum:homepage')
                 
-        form = TopicForm(user)
+        form = TopicForm
         return render(request, 'forum/create-topic.html', {'form': form})
     return render(request, 'forum/404.html')

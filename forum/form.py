@@ -44,7 +44,6 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super(LoginForm, self).__init__(*args, **kwargs)
-        self.fields['user'].queryset = User.objects.filter(pk = user.id)
 
     username = UsernameField(label='Όνομα Χρήστη')
     password = forms.CharField(label='Κωδικός', widget=forms.PasswordInput)
