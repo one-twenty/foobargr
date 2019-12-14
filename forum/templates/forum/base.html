@@ -77,7 +77,6 @@
         </nav>
         </div>  
   
-
         <!-- Sidenav -->
         <ul class="sidenav grey darken-3" id="mobile-links">
 
@@ -146,6 +145,12 @@
             {% block content %}
             {% endblock %}
         </div>
+
+        {% if user.is_authenticated%}
+            <div class="create-topic">
+                <a  class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}">Δημιουργία Νέου Θέματος</a>
+            </div>
+        {% endif %}
        
     </main>
 

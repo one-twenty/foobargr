@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpRequest
-from .form import RegisterForm, LoginForm
+from .form import RegisterForm, LoginForm, TopicForm
 from django.contrib import messages
 from .models import Category, Topic
 
@@ -65,3 +65,21 @@ def category_request(request, category):
         return render(request, 'forum/category.html', {'category': cat, 'topics': topics})
     except Category.DoesNotExist:
         return render(request, 'forum/404.html')
+
+
+def create_topic(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = TopicForm(request.POST)
+            if form.is_valid():
+                title = form.cleaned_data.get('title')
+                category = form.cleaned_data.get('category')
+                content = form.cleaned_data.get('content')
+                user = request.user
+                form = form.save()
+                messages.success(request, 'Το θέμα σας δημιουργήθηκε')
+                return redirect('forum:homepage')
+                
+        form = TopicForm(user)
+        return render(request, 'forum/create-topic.html', {'form': form})
+    return render(request, 'forum/404.html')

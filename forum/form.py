@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-import gettext as _
+from .models import Topic
 
 
 class RegisterForm(UserCreationForm):
@@ -44,6 +44,24 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super(LoginForm, self).__init__(*args, **kwargs)
+        self.fields['user'].queryset = User.objects.filter(pk = user.id)
 
     username = UsernameField(label='Όνομα Χρήστη')
     password = forms.CharField(label='Κωδικός', widget=forms.PasswordInput)
+
+
+class TopicForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault('label_suffix', '')
+        super(TopicForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = Topic
+        fields = ('title', 'category', 'content', 'user')
+        labels = {
+            'title': 'Τίτλος',
+            'category': 'Κατηγορία',
+            'content': 'Περιεχόμενο'
+        }
+        
+   
