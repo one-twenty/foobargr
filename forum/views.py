@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpRequest
+from django.http import HttpRequest, Http404
 from .form import RegisterForm, LoginForm, TopicForm
 from django.contrib import messages
 from .models import Category, Topic
@@ -79,4 +79,4 @@ def create_topic(request):
                 return redirect('forum:homepage') #TODO redirect to created topic  
         form = TopicForm
         return render(request, 'forum/create-topic.html', {'form': form})
-    return render(request, 'forum/404.html')
+    raise Http404
