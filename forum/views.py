@@ -76,7 +76,15 @@ def create_topic(request):
                 form.user = request.user
                 form.save()
                 messages.success(request, 'Το θέμα σας δημιουργήθηκε')
-                return redirect('forum:homepage') #TODO redirect to created topic  
+                return redirect('forum:topic', form.id) #TODO redirect to created topic  
         form = TopicForm
         return render(request, 'forum/create-topic.html', {'form': form})
     raise Http404
+
+
+def topic_request(request, topicID):
+    try:
+        topic = Topic.objects.get(id=topicID)
+        return render(request, 'forum/topic.html', {'topic': topic})
+    except Topic.DoesNotExist:
+        raise Http404
