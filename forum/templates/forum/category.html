@@ -5,10 +5,9 @@
     <link rel="stylesheet" href="{% static 'forum/css/category.css' %}">
 {% endblock styles %}
 
-
 {% block content%}
 
-<h2>{{category.parent_category.name}} > {{category.name}}</h2>
+<h4>{{category.parent_category.name}} > {{category.name}}</h4>
 
 {% for topic in topics %}
     <div class="topic-card">
@@ -19,14 +18,16 @@
                 </div>
                 <div class="category">
                     <p>
-                        {{topic.topic.category.name}}
+                        <a href="#">Web Development</a>  
+                        >
+                        <a href="#">{{topic.category}}</a>        
                     </p>
                 </div>
                 <div class="user">
                     <p>
-                        <a href="#">{{topic.user}}</a> <br>
+                        <a href="">{{topic.user}}</a> <br>
                         Admin <br>
-                        Μηνύματα: #TODO
+                        Μηνύματα: 666
                     </p>
                 </div>
                 <div class="card-stacked">
@@ -34,21 +35,26 @@
                         <p>{{topic.datetime}}</p>
                     </div>
                     <div class="post-title">
-                        {{topic}}
+                        {{topic.title}}
                     </div>
                     <div class="card-content">
                         <p>
-                            {{topic.content|safe}}
+                            {% if topic.content|length > 120 %}
+                                {{topic.content|slice:117|safe}}...
+                            {% else %}
+                                {{topic.content|safe}}
+                            {% endif %}
                         </p>
                     </div>
-                    <div class="card-action">
-                        <a href="#">Εμφάνιση Θέματος</a>
-                        <a href="#">Απάντηση</a>
+                    <div class="topic-action">
+                        <a class="btn red" href="#">Εμφάνιση Θέματος</a>
+                        <a class="btn red" href="#">Απάντηση</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 {% endfor %}
 
 {% endblock %}

@@ -1,4 +1,4 @@
-h2 { 
+h4 {
     text-align: center;
     margin-top: 50px;
     color: white;
@@ -10,16 +10,19 @@ h2 {
     animation: topics-show 1.5s;
     background: #212121 !important;
     color: white;
+    height: 100px;
 }
 
 .card-action {
-    padding: 0;
-    margin: 0;
+    position: absolute;
+    transform: translateY(140%);
+    bottom: 0;
 }
 
 .card-action a {
     color: red !important;
     text-transform: none !important;
+    transform: translateX(50%) !important;
 }
 
 .topic-card {
@@ -28,24 +31,21 @@ h2 {
 
 .topic-card img {
     border-radius: 50% !important;
-    height: 120px !important;
-    width: 120px !important;
+    height: 80px !important;
+    width: 80px !important;
+    margin-top: 4px;
 }
 
 .datetime-published {
-    margin-right: 10px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin-top: 20px;
+    padding: 20px;
+    font-size: 13px;
+    margin-top: -3px;
 }
 
 .user {
-    position: absolute;
-    /* margin-left: 30px;
-    margin-top: 110px; */
     text-align: center;
-    bottom: 0;
+    margin-top: -13px;
+    margin-left: 5px;
 }
 
 .user a {
@@ -53,8 +53,10 @@ h2 {
 }
 
 .post-title {
-    font-size: 2rem;
+    position: absolute;
+    font-size: 30px;
     margin-left: 20px;
+    margin-top: -10px;
 }
 
 .category {
@@ -62,6 +64,44 @@ h2 {
     right: 0;
     top: 0;
     margin-right: 15px;
+    pointer-events:auto;
+}
+
+.category a {
+    color: #757575 ;
+}
+
+.category p a:hover {
+    cursor: pointer;
+}
+
+.card-content {
+    position: absolute;
+    margin-top: 30px;
+    margin-left: -4px;
+    font-size: 16px;
+}
+
+.topic-action {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 5px;
+}
+
+.btn{
+    border-radius: 30px;
+}
+
+.btn:hover {
+    transition: ease-in 0.1s;
+    transform: scale(1.1);
+}
+
+.topic-action a {
+    margin-left: 10px;  
+    color: white;
+    text-transform: none;
 }
 
 @keyframes topics-show {
