@@ -146,9 +146,9 @@
             {% endblock %}
         </div>
 
-        {% if user.is_authenticated%}
+        {% if user.is_authenticated and request.path != '/create-topic' %}
             <div class="create-topic">
-                <a  class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}">Δημιουργία Νέου Θέματος</a>
+                <a  class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}"><i class="create-topic-btn-plus material-icons">add</i></a>
             </div>
         {% endif %}
        
