@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from datetime import datetime    
+from tinymce import HTMLField
 
 
 class Category(models.Model):
@@ -17,7 +18,7 @@ class Category(models.Model):
 
 class Topic(models.Model):
     title = models.CharField(max_length=200) 
-    content = models.TextField()
+    content = HTMLField('Content')
     category = models.ForeignKey(Category, verbose_name='Category', default=0, on_delete=models.SET_DEFAULT)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=0, on_delete=models.SET_DEFAULT)
     datetime = models.DateTimeField(auto_now_add=True)
@@ -30,7 +31,7 @@ class Topic(models.Model):
 
 
 class Post(models.Model):
-    content = models.TextField()
+    content = HTMLField('Content')
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=0, on_delete=models.SET_DEFAULT)
     datetime = models.DateTimeField(auto_now_add=True)
@@ -43,7 +44,7 @@ class Post(models.Model):
 
 
 class Reply(models.Model):
-    content = models.TextField()
+    content = HTMLField('Content')
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=0, on_delete=models.SET_DEFAULT)
     datetime = models.DateTimeField(auto_now_add=True)

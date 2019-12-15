@@ -5,3 +5,7 @@ h4{
 .publish-topic {
     transform: translateX(1030%);
 }
+
+button{
+    text-transform: none !important;
+}

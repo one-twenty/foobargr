@@ -3,6 +3,7 @@
 {% load static %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'forum/css/create-topic.css' %}">
+    {{ form.media }}
 {% endblock styles %}
 
 {% block content %}
@@ -16,7 +17,7 @@
         <label for="{{field.id_for_label}}"> </br> 
             {% if  field.name == 'category' %}
                 <select>
-                    <option value="volvo">Test</option>
+                    <option value="category">Test</option>
                 </select> 
             {% endif %}
         </label>

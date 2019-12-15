@@ -21,7 +21,8 @@ from forum import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('forum.urls'))
+    path('', include('forum.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]
 
 handler404 = views.error_404
