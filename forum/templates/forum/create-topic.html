@@ -14,13 +14,6 @@
     {% for field in form %}
         {{field.label_tag}} </br>
         {{field}}
-        <label for="{{field.id_for_label}}"> </br> 
-            {% if  field.name == 'category' %}
-                <select>
-                    <option value="category">Test</option>
-                </select> 
-            {% endif %}
-        </label>
     {% endfor %}
     <button type="submit" class="btn publish-topic red">Δημοσίευση</button>
 </form>

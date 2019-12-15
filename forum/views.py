@@ -64,7 +64,7 @@ def category_request(request, category):
         topics = Topic.objects.filter(category=cat.id)
         return render(request, 'forum/category.html', {'category': cat, 'topics': topics})
     except Category.DoesNotExist:
-        return render(request, 'forum/404.html')
+        raise Http404
 
 
 def create_topic(request):
@@ -72,13 +72,11 @@ def create_topic(request):
         if request.method == 'POST':
             form = TopicForm(request.POST)
             if form.is_valid():
-                title = form.cleaned_data.get('title')
-                category = form.cleaned_data.get('category')
-                content = form.cleaned_data.get('content')
-                form = form.save()
+                form = form.save(commit=False)
+                form.user = request.user
+                form.save()
                 messages.success(request, 'Το θέμα σας δημιουργήθηκε')
-                return redirect('forum:homepage')
-                
+                return redirect('forum:homepage') #TODO redirect to created topic  
         form = TopicForm
         return render(request, 'forum/create-topic.html', {'form': form})
     return render(request, 'forum/404.html')
