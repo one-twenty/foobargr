@@ -10,6 +10,7 @@ h4 {
     animation: topics-show 1.5s;
     background: #212121 !important;
     color: white;
+    min-height: 210px;
 }
 
 .card-action {
@@ -18,7 +19,7 @@ h4 {
 }
 
 .card-action a {
-    color: red !important;
+    color: white !important;
     text-transform: none !important;
 }
 
