@@ -56,7 +56,7 @@ class TopicForm(forms.ModelForm):
 
     class Meta:
         model = Topic
-        fields = ('title', 'category', 'content', 'user')
+        fields = ('title', 'category', 'content')
         labels = {
             'title': 'Τίτλος',
             'category': 'Κατηγορία',
