@@ -6,17 +6,14 @@
 {% endblock styles %}
 
 {% block content %}
+
 <h4>{{topic.category.parent_category.name}} > {{topic.category.name}}</h4>
+
 <div class="topic-card">
     <div class="col s12 m7">
         <div class="card horizontal">
             <div class="card-image">
                 <img src="https://lorempixel.com/100/190/nature/6" />
-            </div>
-            <div class="category">
-                <p>
-                    {{topic.category.parent_category.name}} > {{topic.category.name}}
-                </p>
             </div>
             <div class="user">
                 <p>
@@ -34,12 +31,7 @@
                 </div>
                 <div class="card-content">
                     <p>
-                        {% if topic.content|length > 120 %} 
-                            <br>
-                            {{topic.content|safe}}
-                        {% else %}
-                            {{topic.content|safe}}
-                        {% endif %}
+                        {{topic.content|safe}}
                     </p>
                 </div>
                 <div class="card-action">
