@@ -29,11 +29,11 @@ li {
 }
 
 .nav-width li {
-    /* width: 271px; */
+    width: 271px;
     text-align: center;
 }
 
-.nav-categories{
+.nav-categories {
     float: center !important;
 }
 
@@ -91,6 +91,20 @@ input:focus {
     margin-top: 12px;
 }
 
+.create-topic-btn {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px rgb(15, 15, 15);
+    font-size: 50px !important;
+}
+
+
 @media only screen and (min-width: 601px) {
     #toast-container {
         position: absolute;
@@ -108,6 +122,10 @@ input:focus {
 
     .brand-logo {
         height: 6.5vh;
+    }
+
+    .create-topic-btn-plus {
+        transform: scale(1.6);
     }
 }
 
@@ -136,21 +154,13 @@ input:focus {
     .footer-copyright a {
         text-align: center !important;
     }
-}
 
-.create-topic-btn {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    right: 40px;
-    color: #fff;
-    border-radius: 50px;
-    text-align: center;
-    box-shadow: 2px 2px 3px rgb(15, 15, 15);
-    font-size: 50px !important;
-}
+    .create-topic-btn {
+        bottom: 10px !important;
+        right: 10px !important;
+    }
 
-.create-topic-btn-plus{
-    transform: scale(1.6);
+    .create-topic-btn-plus {
+        transform: scale(2);
+    }
 }
