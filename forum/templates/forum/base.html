@@ -115,7 +115,7 @@
                         <ul id="sidenav-dropdown-categories-{{category.id}}" class="dropdown-content grey darken-3">
                             {% for subcategory in categories %}
                                 {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
-                                        <li><a href="#{{category}}/{{subcategory}}" class="white-text">{{subcategory}}</a></li>
+                                    <li><a href="{% url 'forum:category' subcategory.url %}" class="white-text">{{subcategory}}</a></li>
                                 {% endif %}
                             {% endfor %}
                         </ul>
