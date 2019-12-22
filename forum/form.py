@@ -22,11 +22,8 @@ class RegisterForm(UserCreationForm):
     }
 
     def clean(self):
-        error_dict = {}
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
-        password1 = self.cleaned_data.get('password1')
-        password2 = self.cleaned_data.get('password2')
         if User.objects.filter(email=email).exists() and User.objects.filter(username=username).exists():
             raise ValidationError([self.error_messages['duplicate_username'], self.error_messages['duplicate_email']])
         if User.objects.filter(email=email).exists():
