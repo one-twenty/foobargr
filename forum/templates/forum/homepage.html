@@ -38,8 +38,8 @@
                         <p>{{topic.datetime}}</p>
                     </div>
                     <div class="post-title">
-                        {% if topic.content|length > 43 %}
-                            {{topic.title|slice:40}}..
+                        {% if topic.title|length > 43 %}
+                            {{topic.title|slice:40}}...
                         {% else %}
                             {{topic.title}}
                         {% endif %}
