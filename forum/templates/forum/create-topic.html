@@ -1,0 +1,22 @@
+{% extends 'forum/base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'forum/css/create-topic.css' %}">
+    {{ form.media }}
+{% endblock styles %}
+
+{% block content %}
+
+<h4>Δημιουργία Θέματος</h4>
+<form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        {{field.label_tag}} </br>
+        {{field}}
+    {% endfor %}
+    <button type="submit" class="btn publish-topic red">Δημοσίευση</button>
+</form>
+
+
+{% endblock  %}

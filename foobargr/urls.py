@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler404, handler500
+from forum import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('forum.urls'))
+    path('', include('forum.urls')),
+    path('tinymce/', include('tinymce.urls')),
 ]
+
+handler404 = views.error_404

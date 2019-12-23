@@ -1,0 +1,49 @@
+.forgot-password {
+    text-decoration: underline;
+    text-align: center;
+    display: block;
+}
+
+.forgot-password:hover {
+    color: blue;
+}
+
+@keyframes card-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .login-card {
+        animation: card-show 1s;
+        padding: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media only screen and (max-width: 601px) {
+    .login-card{
+        transform: scale(2);
+        padding: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 70%;;
+    }
+
+    .login-button{
+        margin: 0 20px 0 20px;
+    }
+}

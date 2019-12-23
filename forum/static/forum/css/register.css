@@ -1,0 +1,118 @@
+.button {
+    position: relative;
+    margin: -20px -50px;
+    top: 50%;
+    left: 50%;
+}
+
+@keyframes card-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .register-card {
+        animation: card-show 1s;
+        padding: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media only screen and (max-width: 601px) {
+    .register-card {
+        transform: scale(2);
+        padding: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 70%;;
+    }
+}
+
+.button {
+    position: relative;
+    margin: -20px -50px;
+    top: 50%;
+    left: 50%;
+}
+
+.tooltip {
+    position: absolute;
+    display: inline-block;
+    margin-top: 10px;
+    transform: translateY(-9px);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+@media only screen and (min-width: 601px) {
+    .register-card {
+        animation: card-show 1s;
+        padding: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 400px;
+        background-color: #212121;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+    }
+}
+
+@media only screen and (max-width: 601px) {
+    .register-card {
+        transform: scale(2);
+        padding: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 70%;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 360px;
+        background-color: #212121;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        position: absolute;
+        transform: translateX(-35%);
+    }
+}
+
+@keyframes card-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

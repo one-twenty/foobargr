@@ -1,22 +1,40 @@
-{% extends 'forum/base.html' %}
+{% extends 'forum/base.html' %} 
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'forum/css/register.css' %}">
+{% endblock styles %}
 
 {% block content %}
 
-    <div class="row">
-        <form class="col s30" method="POST">
-            {% csrf_token %}
-            {% for field in form %}
-                <div class="row">
-                    <div class="input-field">
-                        {{field}}
-                        <label for="{{field.id_for_label}}">{{field.label_tag}}</label>
-                    </div>
-                </div>
-            {% endfor %}
-            <button class="btn deep-purple" type="submit">Εγγραφή</button>
-        </form>
-        <br>
-        Αν έχεις ήδη λογαριασμό, <a href="{% url 'forum:login' %}"><strong>Συνδέσου</strong></a> εδώ
-   </div>   
+<div class="row register-card">
+    <form method="POST">
+        {% csrf_token %} 
+        {% for field in form %}
+        <div class="row">
+            <div class="input-field">
+                {{field}}
+                <label for="{{field.id_for_label}}">
+                    {{field.label_tag}} 
+                    {% if  field.name == 'password1'%}
+                        <div class="tooltip"> 
+                            <i class="material-icons">info</i>
+                            <span class="tooltiptext">
+                                Ο Κωδικός θα πρέπει να: <br>
+                                -Είναι μεγαλύτερος από 8 χαρακτήρες <br>
+                                -Περιέχει τουλάχιστον ένα γράμμα <br>
+                                -Να μην περιέχει πολλά κοινά στοιχεία με το Όνομα Χρήστη </br>
+                                 ή το Email
+                            </span>
+                        </div>
+                    {% endif %}
+                </label>
+                    
+            </div>
+        </div>
+        {% endfor %}
+        <button class="btn red button" type="submit">Εγγραφη</button>
+    </form>
+</div>
 
 {% endblock content %}

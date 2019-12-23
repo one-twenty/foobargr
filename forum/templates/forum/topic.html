@@ -1,0 +1,48 @@
+{% extends 'forum/base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'forum/css/topic.css' %}">
+{% endblock styles %}
+
+{% block content %}
+
+<h4>{{topic.category.parent_category.name}} > {{topic.category.name}}</h4>
+
+<div class="topic-card">
+    <div class="col s12 m7">
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="https://lorempixel.com/100/190/nature/6" />
+            </div>
+            <div class="user">
+                <p>
+                    <a href="#">{{topic.user}}</a> <br>
+                    Admin <br>
+                    Μηνύματα: #TODO
+                </p>
+            </div>
+            <div class="card-stacked">
+                <div class="datetime-published">
+                    <p>{{topic.datetime}}</p>
+                </div>
+                <div class="post-title">
+                    {{topic.title}}
+                </div>
+                <div class="card-content">
+                    <p>
+                        {{topic.content|safe}}
+                    </p>
+                </div>
+                <div class="card-action">
+                    {% if topic.user == user %}
+                        <a class="btn red" href="#">Επεξεργασία</a>
+                    {% endif %}
+                    <a class="btn red" href="#">Απάντηση</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock  %}
