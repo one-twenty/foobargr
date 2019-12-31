@@ -2,6 +2,21 @@ from django.db import models
 from django.conf import settings
 from datetime import datetime    
 from tinymce import HTMLField
+from django.contrib.auth.models import User
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = image = models.ImageField(default='forum/static/forum/assets/profile_images/default_user_icon.png',
+                                      upload_to='forum/static/forum/assets/profile_images/')
+    role = models.CharField(max_length=50, default='Noob')
+    posts = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = 'User Profiles'
+
+    def __str__(self):
+        return self.user.username
 
 
 class Category(models.Model):
