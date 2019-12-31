@@ -1,5 +1,5 @@
 db.sqlite3
 foobargr/secret_key.txt
 **/__pycache__
-
+.vscode/
 .DS_Store
