@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.http import HttpRequest, Http404
 from .form import RegisterForm, LoginForm, TopicForm
 from django.contrib import messages
-from .models import Category, Topic
+from .models import Category, Topic, UserProfile
 
 
 def homepage(request):
@@ -16,7 +16,9 @@ def register_request(request: HttpRequest):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # username = form.cleaned_data.get('username')
+            profile = UserProfile()
+            profile.user = user
+            profile.save()
             messages.success(request, 'Επιτυχής εγγραφή')
             login(request, user)
             return redirect('forum:homepage')
