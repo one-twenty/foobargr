@@ -11,7 +11,7 @@ def homepage(request):
     return render(request, 'forum/homepage.html', {'topics': Topic.objects.all().order_by('-datetime')})
 
 
-def register(request: HttpRequest):
+def register_request(request: HttpRequest):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
