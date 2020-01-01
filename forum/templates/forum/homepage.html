@@ -28,7 +28,7 @@
                     <p>
                         <a href="">{{topic.user}}</a> <br>
                         <span class="only-fullscreen">
-                            <span class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.role}}</span><br>
+                            <span class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</span><br>
                             Posts: {{topic.user.userprofile.posts}}
                         </span>
                     </p>
