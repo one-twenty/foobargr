@@ -13,13 +13,13 @@
     <div class="col s12 m7">
         <div class="card horizontal">
             <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6" />
+                <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}"> 
             </div>
             <div class="user">
                 <p>
                     <a href="#">{{topic.user}}</a> <br>
-                    Admin <br>
-                    Μηνύματα: #TODO
+                    <span class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</span><br>
+                    Posts: {{topic.user.userprofile.posts}}
                 </p>
             </div>
             <div class="card-stacked">

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import Topic
+from .models import Topic, Category
 
 
 class RegisterForm(UserCreationForm):
@@ -49,13 +49,14 @@ class TopicForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super(TopicForm, self).__init__(*args, **kwargs)
+        self.fields['category'] = forms.ModelChoiceField(
+                    queryset=Category.objects.filter(parent_category__isnull=False), empty_label=None, label='Κατηγορία')
 
     class Meta:
         model = Topic
         fields = ('title', 'category', 'content')
         labels = {
             'title': 'Τίτλος',
-            'category': 'Κατηγορία',
             'content': 'Περιεχόμενο'
         }
         

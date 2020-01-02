@@ -1,5 +1,7 @@
 db.sqlite3
 foobargr/secret_key.txt
 **/__pycache__
-
+.vscode/
 .DS_Store
+forum/static/forum/assets/profile_images/*
+!forum/static/forum/assets/profile_images/default_user_icon.png
