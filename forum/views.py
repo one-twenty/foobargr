@@ -8,7 +8,7 @@ from .models import Category, Topic, UserProfile
 
 
 def homepage(request):
-    return render(request, 'forum/homepage.html', {'topics': Topic.objects.all().order_by('-datetime')})
+    return render(request, 'forum/topics.html', {'topics': Topic.objects.all().order_by('-datetime')})
 
 
 def register_request(request: HttpRequest):
@@ -64,7 +64,7 @@ def category_request(request, category):
     try:
         cat = Category.objects.get(url=category)
         topics = Topic.objects.filter(category=cat.id).order_by('-datetime')
-        return render(request, 'forum/category.html', {'category': cat, 'topics': topics})
+        return render(request, 'forum/topics.html', {'category': cat, 'topics': topics})
     except Category.DoesNotExist:
         raise Http404
 

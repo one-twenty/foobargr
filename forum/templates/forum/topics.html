@@ -2,12 +2,16 @@
 
 {% load static %}
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'forum/css/category.css' %}">
+    <link rel="stylesheet" href="{% static 'forum/css/topics.css' %}">
 {% endblock styles %}
 
 {% block content%}
 
-<h4>{{category.parent_category.name}} > {{category.name}}</h4>
+{% if request.path == '/' %}
+    <h4>Τελευταία Θέματα</h4>
+{% else %}
+    <h4>{{category.parent_category.name}} > {{category.name}}</h4> 
+{% endif %}
 
 {% for topic in topics %}
 
@@ -15,7 +19,9 @@
         <div class="col s12 m7">
             <div class="card horizontal">
                 <div class="card-image">
-                    <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}">
+                    <a href="{% url 'forum:profile' topic.user.username %}">
+                        <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}"> 
+                    </a>
                 </div>
                 <div class="category">
                     <p>
@@ -26,10 +32,10 @@
                 </div>
                 <div class="user">
                     <p>
-                        <a href="">{{topic.user}}</a> <br>
+                        <a href="{% url 'forum:profile' topic.user.username %}">{{topic.user}}</a> <br>
                         <span class="only-fullscreen">
                             <span class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</span><br>
-                            Posts: {{topic.user.userprofile.posts}}
+                            Posts: {{topic.user.userprofile.posts_count}}
                         </span>
                     </p>
                 </div>
@@ -38,11 +44,13 @@
                         <p>{{topic.datetime}}</p>
                     </div>
                     <div class="post-title">
-                        {% if topic.content|length > 43 %}
-                            {{topic.title|slice:40}}..
-                        {% else %}
-                            {{topic.title}}
-                        {% endif %}
+                        <a style="color: white;" href="{% url 'forum:topic' topic.id %}">
+                            {% if topic.title|length > 43 %}
+                                {{topic.title|slice:40}}...</a>
+                            {% else %}
+                                {{topic.title}}
+                            {% endif %}
+                        </a>
                     </div>
                     <div class="card-content">
                         <p>
