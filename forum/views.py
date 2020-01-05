@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpRequest, Http404
-from .form import RegisterForm, LoginForm, TopicForm
+from .form import RegisterForm, LoginForm, TopicForm, PostForm
 from django.contrib import messages
-from .models import Category, Topic, UserProfile
+from .models import Category, Topic, UserProfile, Post
+from django.contrib.auth.models import User
 
 
 def homepage(request):
@@ -88,11 +89,25 @@ def create_topic(request):
 
 
 def topic_request(request, topicID):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.topic = Topic.objects.get(id=topicID)
+            form.save()
+            profile = request.user.userprofile
+            profile.posts_count += 1
+            profile.save()
+            return redirect('forum:topic', topicID)
     try:
         topic = Topic.objects.get(id=topicID)
-        return render(request, 'forum/topic.html', {'topic': topic})
+        posts = Post.objects.filter(topic=topic.id)
+        form = PostForm
+        return render(request, 'forum/topic.html', {'topic': topic, 'posts': posts, 'form': form})
     except Topic.DoesNotExist:
         raise Http404
+
 
 def profile_request(request, username):
     try:
