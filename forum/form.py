@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from .models import Topic, Category
+from .models import Topic, Category, Post
 
 
 class RegisterForm(UserCreationForm):
@@ -60,4 +60,8 @@ class TopicForm(forms.ModelForm):
             'content': 'Περιεχόμενο'
         }
         
-   
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = {'content'}  
+        labels = {'content': ''}
