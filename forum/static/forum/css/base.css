@@ -5,6 +5,7 @@ body {
     min-height: 100vh;
     flex-direction: column;
     color: black;
+    scroll-behavior: smooth; 
 }
 
 *:focus {
@@ -29,7 +30,6 @@ li {
 }
 
 .nav-width li {
-    width: 271px;
     text-align: center;
 }
 
@@ -103,7 +103,6 @@ input:focus {
     box-shadow: 2px 2px 3px rgb(15, 15, 15);
     font-size: 50px !important;
 }
-
 
 @media only screen and (min-width: 601px) {
     #toast-container {
