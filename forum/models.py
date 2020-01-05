@@ -19,7 +19,7 @@ class UserProfile(models.Model):
     image = image = models.ImageField(default='forum/static/forum/assets/profile_images/default_user_icon.png',
                                       upload_to='forum/static/forum/assets/profile_images/')
     role = models.CharField(max_length=50, default=USER, choices=user_roles)
-    posts = models.PositiveIntegerField(default=0)
+    posts_count = models.PositiveIntegerField(default=0)
 
     class Meta:
         verbose_name_plural = 'User Profiles'
