@@ -90,3 +90,10 @@ def topic_request(request, topicID):
         return render(request, 'forum/topic.html', {'topic': topic})
     except Topic.DoesNotExist:
         raise Http404
+
+def profile_request(request, username):
+    try:
+        user = User.objects.get(username=username)
+        return render(request, 'forum/profile.html', {'requestedUser': user})
+    except User.DoesNotExist:
+        raise Http404

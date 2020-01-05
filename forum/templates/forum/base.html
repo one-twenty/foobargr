@@ -43,7 +43,7 @@
                             <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">{{ user.username }}<i 
                                 class="material-icons right">person</i></a></li>
                             <ul id="profile-dropdown" class="dropdown-content dropdown-profile">
-                                <li><a href="#!" class="black-text">Προφίλ</a></li>
+                                <li><a href="{% url 'forum:profile' user.username %}" class="black-text">Προφίλ</a></li>
                                 <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
                                 <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
                             </ul>
@@ -96,7 +96,7 @@
                 <li><a class="dropdown-trigger dropdown-hover white-text" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
                     class="material-icons white-text">person</i></a></li>
                     <ul id="profile-dropdown-sidenav" class="dropdown-content grey darken-3">
-                        <li><a href="#!" class="white-text">Προφίλ</a></li>
+                        <li><a href="{% url 'forum:profile' user.username %}" class="white-text">Προφίλ</a></li>
                         <li><a href="#!" class="white-text">Ρυθμίσεις</a></li>
                         <li><a class="white-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
                     </ul>
@@ -146,7 +146,11 @@
             {% endblock %}
         </div>
 
-        {% if user.is_authenticated and request.path != '/create-topic' %}
+        {% if user.is_authenticated and request.path|slice:'6' == '/topic' %}
+            <div class="create-topic">
+                <a class="btn create-topic-btn red" href="#post">Α</a>
+            </div>
+        {% elif user.is_authenticated and request.path != '/create-topic' %}
             <div class="create-topic">
                 <a  class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}"><i class="create-topic-btn-plus material-icons">add</i></a>
             </div>
@@ -159,7 +163,7 @@
             <div class="footer-copyright grey darken-4">
                 <div class="container">
                     © 2019 All Rights Reserved OneTwenty Inc.
-                    <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/programatistisgr" target="blank">See our project here.</a></div> 
+                    <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/foobargr" target="blank">See our project here.</a></div> 
                 </div>
             </div>
         </footer> 

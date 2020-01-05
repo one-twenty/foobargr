@@ -12,4 +12,5 @@ urlpatterns = [
     path('create-topic', views.create_topic, name='create-topic'),
     path('category/<slug:category>/', views.category_request, name='category'),
     path('topic/<int:topicID>/', views.topic_request, name='topic'),
+    path('profile/<slug:username>/', views.profile_request, name='profile')
 ]
