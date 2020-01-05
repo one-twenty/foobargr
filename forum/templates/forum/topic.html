@@ -3,6 +3,7 @@
 {% load static %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'forum/css/topic.css' %}">
+    {{ form.media }}
 {% endblock styles %}
 
 {% block content %}
@@ -13,13 +14,15 @@
     <div class="col s12 m7">
         <div class="card horizontal">
             <div class="card-image">
-                <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}"> 
+                <a href="{% url 'forum:profile' topic.user.username %}">
+                    <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}"> 
+                </a>
             </div>
             <div class="user">
                 <p>
-                    <a href="#">{{topic.user}}</a> <br>
+                    <a href="{% url 'forum:profile' topic.user.username %}">{{topic.user}}</a> <br>
                     <span class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</span><br>
-                    Posts: {{topic.user.userprofile.posts}}
+                    Posts: {{topic.user.userprofile.posts_count}}
                 </p>
             </div>
             <div class="card-stacked">
@@ -36,13 +39,60 @@
                 </div>
                 <div class="card-action">
                     {% if topic.user == user %}
-                        <a class="btn red" href="#">Επεξεργασία</a>
+                        <a class="btn red" href="#post">Επεξεργασία</a>
                     {% endif %}
-                    <a class="btn red" href="#">Απάντηση</a>
+                    <a class="btn red" href="#post">Παράθεση</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+{% for post in posts %}
+    <div class="topic-card">
+        <div class="col s12 m7">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <a href="{% url 'forum:profile' post.user.username %}">
+                        <img src="{% static post.user.userprofile.image.url|slice:'13:' %}"> 
+                    </a>
+                </div>
+                <div class="user">
+                    <p>
+                        <a href="{% url 'forum:profile' post.user.username %}">{{post.user}}</a> <br>
+                        <span class="{{post.user.userprofile.role|lower}}">{{post.user.userprofile.get_role_display}}</span><br>
+                        Posts: {{post.user.userprofile.posts_count}}
+                    </p>
+                </div>
+                <div class="card-stacked">
+                    <div class="datetime-published">
+                        <p>{{post.datetime}}</p>
+                    </div>
+
+                    <div class="card-content">
+                        <p>
+                            {{post.content|safe}}
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        {% if post.user == user %}
+                            <a class="btn red" href="#post">Επεξεργασία</a>
+                        {% endif %}
+                        <a class="btn red" href="#post">Παράθεση</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+<div id="post" class="post">
+    <form method="POST">
+        {% csrf_token %}
+            {{form}}
+        <button type="submit" class="btn red publish-btn">Δημοσίευση</button>
+    </form>
+<div>
 
 {% endblock  %}
