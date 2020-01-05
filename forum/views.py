@@ -78,7 +78,10 @@ def create_topic(request):
                 form.user = request.user
                 form.save()
                 messages.success(request, 'Το θέμα σας δημιουργήθηκε')
-                return redirect('forum:topic', form.id) #TODO redirect to created topic  
+                profile = request.user.userprofile
+                profile.posts_count += 1
+                profile.save()
+                return redirect('forum:topic', form.id)  
         form = TopicForm
         return render(request, 'forum/create-topic.html', {'form': form})
     raise Http404
