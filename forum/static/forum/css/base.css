@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     background-color: #cacaca;
@@ -33,12 +37,19 @@ li {
     text-align: center;
 }
 
-.nav-categories {
-    float: center !important;
+.nav-content {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .nav-categories {
+    display: flex;
     line-height: 45px;
+}
+
+.nav-categories-links {
+    flex: 1;
 }
 
 .dropdown-trigger:hover,
