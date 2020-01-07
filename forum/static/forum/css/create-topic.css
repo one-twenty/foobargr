@@ -1,11 +1,18 @@
 h4{
-    margin-top: 60px;
+    margin-top: 50px;
+    text-align: center;
 }
 
-.publish-topic {
-    transform: translateX(1030%);
+.topic-create-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
 }
 
-button{
+button {
     text-transform: none !important;
+    margin-top: 10px; 
 }
+

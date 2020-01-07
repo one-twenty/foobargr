@@ -9,14 +9,16 @@
 {% block content %}
 
 <h4>Δημιουργία Θέματος</h4>
-<form method="POST">
-    {% csrf_token %}
-    {% for field in form %}
-        {{field.label_tag}} </br>
-        {{field}}
-    {% endfor %}
-    <button type="submit" class="btn publish-topic red">Δημοσίευση</button>
-</form>
 
+<div class="topic-create-form">
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            {{field.label_tag}}
+            {{field}}
+        {% endfor %}
+        <button type="submit" class="btn red">Δημοσίευση</button>  
+    </form>
+</div>
 
 {% endblock  %}
