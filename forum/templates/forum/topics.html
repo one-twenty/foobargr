@@ -16,7 +16,7 @@
 {% for topic in topics %}
 
     <div class="topic-card">
-        <div class="user">
+        <div class="card-user">
             <div class="user-image">
                 <a href="{% url 'forum:profile' topic.user.username %}">
                     <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}"> 
@@ -24,10 +24,8 @@
             </div>
             <div class="user-info">
                 <a href="{% url 'forum:profile' topic.user.username %}">{{topic.user}}</a> 
-                <div>
-                    <div class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</div>
-                    <div>Posts: {{topic.user.userprofile.posts_count}}</div>
-                </div>
+                <div class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</div>
+                <div>Posts: {{topic.user.userprofile.posts_count}}</div>  
             </div>
         </div>  
         <div class="card-content">
