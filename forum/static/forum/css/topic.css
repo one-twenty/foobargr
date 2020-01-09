@@ -1,97 +1,119 @@
 h4 {
     text-align: center;
     margin-top: 50px;
-    color: black;
 }
 
-.admin{
-    color: red;
-}
-
-.moderator{
-    color: blue;
-}
-
-.card {
-    border-radius: 20px;
-    padding: 5px;
-    animation: topics-show 1.5s;
-    background: #212121 !important;
+.topic-card {
+    margin: 10px;
+    border-radius: 18px;
+    display: flex;
+    background: #212121;
     color: white;
-    min-height: 210px;
+    position: relative;
 }
 
-.card-action {
-    padding: 0;
-    margin: 0;
+.card-user {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    flex-basis: 10%;
+}
+
+.user-image {
+    margin: 10px 10px 0 10px;
+}
+
+.user-image img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+}
+
+.user-info {
+    margin-bottom: 10px;
 }
 
 .card-content {
-    word-wrap: break-word;
-    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 90%;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.topic-title {
+    font-size: 1.5rem;
+    order: 1;
+    flex: 1;
+    margin-top: 5px;
+}
+
+.topic-datetime {
+    order: 2;
+    flex: 1;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+.topic-content {
+    order: 3;
+    flex: 5;
     display: flex;
     flex-wrap: wrap;
 }
 
-.card-action a {
-    color: red !important;
-    text-transform: none !important;
+.divider {
+    order: 4;
+    opacity: 0.3;
+    width: 99%;
 }
 
-.topic-card {
-    border-radius: 10px;
+.topic-action {
+    order: 5;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
-.topic-card img {
-    border-radius: 50% !important;
-    height: 120px !important;
-    width: 120px !important;
+.topic-action-btn {
+    text-transform: none;
+    border-radius: 15px;
 }
 
-.datetime-published {
+.like {
     margin-right: 10px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin-top: 20px;
+    align-content: center;
+    border: none;
+    background: none;
+    outline: none;
 }
 
-.user {
-    position: absolute;
-    margin-left: 30px;
-    margin-top: 110px;
-    text-align: center;
-    bottom: 0;
+.like:hover {
+    cursor: pointer;
 }
 
-.user a {
-    font-size: 20px;
+.like img {
+    filter: invert(80%);
+    height: 40px;
 }
 
-.post-title {
-    font-size: 2rem;
-    margin-left: 20px;
-}
 
-.post {
+
+.reply {
     display: flex;
     justify-content: center;
 }
 
-.category {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin-right: 15px;
+form {
+    display: flex;
+    flex-direction: column;
 }
 
-.card-action a {
-    color: white !important;
-}
-
-.publish-btn {
-    text-transform: none;
-    margin: 10px;
+.topic-action-btn {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 @keyframes topics-show {
