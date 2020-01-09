@@ -1,6 +1,12 @@
-{% extends 'forum/base.html' %} {% load static %} {% block styles %}
-<link rel="stylesheet" href="{% static 'forum/css/topic.css' %}" />
-{% endblock styles %} {% block content%}
+{% extends 'forum/base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'forum/css/topic.css' %}">
+    {{form.media}}
+{% endblock styles %}
+
+{% block content%}
 
 <h4>{{topic.category.parent_category.name}} > {{topic.category.name}}</h4>
 
@@ -79,7 +85,8 @@
 
 <div id="post" class="reply">
     <form method="POST">
-        {% csrf_token %} {{form}}
+        {% csrf_token %} 
+        {{form}}
         <button type="submit" class="btn red topic-action-btn">Δημοσίευση</button>
     </form>
     <div>
