@@ -74,6 +74,7 @@ h4 {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .topic-action-btn {
@@ -83,10 +84,20 @@ h4 {
 
 .like {
     margin-right: 10px;
-    align-content: center;
-    border: none;
     background: none;
-    outline: none;
+    border-radius: 50%;
+    border: none;
+    outline: none !important;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease 0.5s;
+}
+
+.liked {
+    background: #f44336;
 }
 
 .like:hover {
@@ -95,10 +106,8 @@ h4 {
 
 .like img {
     filter: invert(80%);
-    height: 40px;
+    height: 25px;
 }
-
-
 
 .reply {
     display: flex;

@@ -1,11 +1,6 @@
-{% extends 'forum/base.html' %} 
-{% load static %} 
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'forum/css/topic.css' %}" />
-    <script src="https://use.fontawesome.com/97cac36895.js"></script>
-    {{ form.media }} 
-{% endblock styles %} 
-{% block content %}
+{% extends 'forum/base.html' %} {% load static %} {% block styles %}
+<link rel="stylesheet" href="{% static 'forum/css/topic.css' %}" />
+{% endblock styles %} {% block content%}
 
 <h4>{{topic.category.parent_category.name}} > {{topic.category.name}}</h4>
 
@@ -40,12 +35,7 @@
                 {% endif %}
                 <a class="btn topic-action-btn red" href="#post">Παράθεση</a>
             </div>
-            <button id="like" class="like"><img src="{% static 'assets/like-off.png' %}" onclick="toggleLike()" /></button>
-            <script>
-                function toggleLike() {
-                    document.getElementById("like").src = "{% static 'assets/like-on.png' %}";
-                }
-            </script>
+            <button id="{{topic.id}}" class="like"><img src="{% static 'assets/like-btn.png' %}" /></button>
         </div>
     </div>
 </div>
@@ -79,7 +69,9 @@
                 {% endif %}
                 <a class="btn topic-action-btn red" href="#post">Παράθεση</a>
             </div>
-            <button class="like"><img src="{% static 'assets/like-off.png' %}" /></button>
+            <button id="{{post.id}}" class="like">
+                <img src="{% static 'assets/like-btn.png' %}" />
+            </button>
         </div>
     </div>
 </div>
