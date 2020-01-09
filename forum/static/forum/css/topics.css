@@ -10,6 +10,7 @@ h4 {
     background: #212121;
     color: white;
     position: relative;
+    animation: topics-show 1.2s;
 }
 
 .card-user {
@@ -91,4 +92,11 @@ h4 {
 .topic-action-btn {
     text-transform: none;
     border-radius: 15px;
+}
+
+@keyframes topics-show {
+    from {
+        transform: translateY(1000px);
+        opacity: 0;
+    }
 }

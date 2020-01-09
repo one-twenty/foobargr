@@ -124,10 +124,3 @@ form {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
-@keyframes topics-show {
-    from {
-        transform: translateY(1000px);
-        opacity: 0;
-    }
-}
