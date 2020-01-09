@@ -147,6 +147,7 @@ input:focus {
         width: 200px;
         padding: 0 50px 0 50px;
     }
+    
     .main-logo {
         margin: 5px;
         height: 50px;
@@ -173,4 +174,12 @@ input:focus {
     .create-topic-btn-plus {
         transform: scale(2);
     }
+}
+
+.admin {
+    color: red;
+}
+
+.moderator {
+    color: blue;
 }
