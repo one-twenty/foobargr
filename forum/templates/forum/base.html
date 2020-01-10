@@ -147,7 +147,7 @@
         </div>
 
         {% if user.is_authenticated and request.path|slice:'6' == '/topic' %}
-            <a class="btn reply-topic-btn red" href="#post">Απάντηση</a>
+            <a class="reply-topic-btn" href="#post">Απάντηση</a>
         {% elif user.is_authenticated and request.path != '/create-topic' %}
             <a class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}"><i class="create-topic-btn-plus material-icons">add</i></a>
         {% endif %}
