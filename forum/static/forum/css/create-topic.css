@@ -1,4 +1,4 @@
-h4{
+h4 {
     margin-top: 50px;
     text-align: center;
 }
@@ -6,9 +6,8 @@ h4{
 .topic-create-form {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-
 }
 
 form {
@@ -27,10 +26,32 @@ label {
     font-size: 1.1rem;
 }
 
-form > input{
+form > input {
     border-bottom: 1px solid #242424 !important;
 }
 
 .select-dropdown {
     text-align: center;
+}
+
+.dropdown-content li > span {
+    color: black;
+    background: gray;
+}
+
+.dropdown-content li > span:hover {
+    background: #616161;
+}
+
+.dropdown-content {
+    background: gray;
+    width: 300px !important;
+}
+
+.select-wrapper {
+    width: 300px;
+}
+
+.select-dropdown:hover {
+    background: gray !important;
 }
