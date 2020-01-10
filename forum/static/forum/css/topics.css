@@ -88,7 +88,11 @@
     .divider {
         order: 3;
         opacity: 0.3;
-        width: 70%;
+        width: 75%;
+    }
+
+    .divider-mobile {
+        display: none;
     }
 }
 
@@ -137,7 +141,21 @@
         position: absolute;
         top: 0;
         right: 0;
-        margin: 25px 15px 15px 15px;
+        margin: 15px 10px;
+    }
+
+    .topic-category {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        font-size: 0.8rem;
+        margin-right: 10px;
+        text-align: center;
+        margin-top: -50px;
+    }
+
+    .topic-category a {
+        color: lightgray;
     }
 
     .card-content {
@@ -145,18 +163,9 @@
         flex-direction: column;
     }
 
-    .topic-category {
-        order: 1;
-        text-align: center;
-    }
-
-    .topic-category a {
-        color: lightgray;
-    }
-
     .topic-title {
         order: 2;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         align-self: center;
         width: 320px;
     }
