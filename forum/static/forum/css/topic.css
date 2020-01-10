@@ -9,7 +9,7 @@ h4 {
     display: flex;
     background: #212121;
     color: white;
-    position: relative;
+    width: 1250px;
 }
 
 .card-user {
@@ -59,8 +59,8 @@ h4 {
 .topic-content {
     order: 3;
     flex: 5;
-    display: flex;
-    flex-wrap: wrap;
+    width: 1100px;
+    word-wrap: break-word;
 }
 
 .divider {
@@ -95,8 +95,9 @@ h4 {
     background: #f44336;
 }
 
-.like:hover {
+.liked:hover {
     cursor: pointer;
+    background: blue;
 }
 
 .like img {
