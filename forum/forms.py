@@ -57,7 +57,7 @@ class TopicForm(forms.ModelForm):
         fields = ('title', 'category', 'content')
         labels = {
             'title': 'Τίτλος',
-            'content': 'Περιεχόμενο'
+            'content': ''
         }
         
 class PostForm(forms.ModelForm):
