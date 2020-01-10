@@ -36,10 +36,10 @@
         <div class="divider"></div>
         <div class="topic-action">
             <div class="btns">
+                <a class="btn topic-action-btn red" href="#post">Παράθεση</a>
                 {% if topic.user == user %}
                 <a class="btn topic-action-btn red" href="#post">Επεξεργασία</a>
                 {% endif %}
-                <a class="btn topic-action-btn red" href="#post">Παράθεση</a>
             </div>
             <button id="{{topic.id}}" class="like"><img src="{% static 'assets/like-btn.png' %}" /></button>
         </div>
@@ -70,10 +70,10 @@
         <div class="divider"></div>
         <div class="topic-action">
             <div class="btns">
-                {% if topic.user == user %}
+                <a class="btn topic-action-btn red" href="#post">Παράθεση</a>
+                {% if post.user == user %}
                 <a class="btn topic-action-btn red" href="#post">Επεξεργασία</a>
                 {% endif %}
-                <a class="btn topic-action-btn red" href="#post">Παράθεση</a>
             </div>
             <button id="{{post.id}}" class="like">
                 <img src="{% static 'assets/like-btn.png' %}" />
@@ -86,8 +86,10 @@
 <div id="post" class="reply">
     <form method="POST">
         {% csrf_token %} 
-        {{form}}
-        <button type="submit" class="btn red topic-action-btn">Δημοσίευση</button>
+        <div class="reply-form">
+            {{form}}
+        </div>
+        <button type="submit" class="btn red topic-reply-btn">Δημοσίευση</button>
     </form>
     <div>
         {% endblock %}

@@ -1,103 +1,212 @@
-h4 {
-    text-align: center;
-    margin-top: 50px;
+@media (min-width: 600px) {
+    h4 {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .topic-card {
+        margin: 10px;
+        border-radius: 18px;
+        display: flex;
+        background: #212121;
+        color: white;
+        width: 1250px;
+    }
+
+    .card-user {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+        flex-basis: 10%;
+    }
+
+    .user-image {
+        margin: 10px 10px 0 10px;
+    }
+
+    .user-image img {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+    }
+
+    .user-info {
+        margin-bottom: 10px;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 90%;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .topic-title {
+        font-size: 1.5rem;
+        order: 1;
+        flex: 1;
+        margin-top: 5px;
+    }
+
+    .topic-datetime {
+        order: 2;
+        flex: 1;
+        font-size: 0.8rem;
+        margin-top: 10px;
+    }
+
+    .topic-content {
+        order: 3;
+        flex: 5;
+        width: 1100px;
+        word-wrap: break-word;
+    }
+
+    .divider {
+        order: 4;
+        opacity: 0.3;
+        width: 99%;
+    }
+
+    .topic-action {
+        order: 5;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .like {
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .liked:hover {
+        cursor: pointer;
+        background: blue;
+    }
+
+    .reply {
+        display: flex;
+        justify-content: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .topic-action-btn, .topic-reply-btn {
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
-.topic-card {
-    margin: 10px;
-    border-radius: 18px;
-    display: flex;
-    background: #212121;
-    color: white;
-    width: 1250px;
+@media (max-width: 600px) {
+    h4 {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .topic-card {
+        border-radius: 18px;
+        display: flex;
+        flex-direction: column;
+        background: #212121;
+        color: white;
+        position: relative;
+        margin-bottom: 15px;
+        width: 340px;
+    }
+
+    .card-user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 50%;
+    }
+
+    .user-image {
+        margin: auto;
+    }
+
+    .user-image img {
+        margin-top: 5px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+
+    .user-info {
+        margin: auto;
+    }
+
+    .topic-datetime {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 25px 15px 15px 15px;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .topic-title {
+        font-size: 1.2rem;
+        align-self: center;
+        width: 320px;
+    }
+
+    .topic-content {
+        align-self: center;
+        width: 320px;
+        word-wrap: break-word;
+    }
+
+    .topic-content img,
+    .topic-content iframe {
+        width: 320px;
+    }
+
+    .topic-action {
+        margin: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .divider {
+        opacity: 0.3;
+        width: 330px;
+        margin-left: 5px;
+    }
+
+    .reply-form {
+        display: none;
+    }
+
+    .topic-reply-btn {
+        margin-bottom: 20px;
+    }
 }
 
-.card-user {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    text-align: center;
-    flex-basis: 10%;
-}
-
-.user-image {
-    margin: 10px 10px 0 10px;
-}
-
-.user-image img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-}
-
-.user-info {
-    margin-bottom: 10px;
-}
-
-.card-content {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 90%;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-.topic-title {
-    font-size: 1.5rem;
-    order: 1;
-    flex: 1;
-    margin-top: 5px;
-}
-
-.topic-datetime {
-    order: 2;
-    flex: 1;
-    font-size: 0.8rem;
-    margin-top: 10px;
-}
-
-.topic-content {
-    order: 3;
-    flex: 5;
-    width: 1100px;
-    word-wrap: break-word;
-}
-
-.divider {
-    order: 4;
-    opacity: 0.3;
-    width: 99%;
-}
-
-.topic-action {
-    order: 5;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
+/* Global */
 .like {
-    margin-right: 10px;
     background: none;
     border-radius: 50%;
     border: none;
     outline: none !important;
     width: 40px;
     height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: ease 0.5s;
-}
-
-.liked {
-    background: #f44336;
-}
-
-.liked:hover {
-    cursor: pointer;
-    background: blue;
 }
 
 .like img {
@@ -105,20 +214,11 @@ h4 {
     height: 25px;
 }
 
-.reply {
-    display: flex;
-    justify-content: center;
+.liked {
+    background: #f44336;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.topic-action-btn {
-    margin: auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.topic-action-btn, .topic-reply-btn {
     text-transform: none;
     border-radius: 15px;
 }
