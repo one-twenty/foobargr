@@ -23,6 +23,13 @@ main {
     flex: 1 0 auto;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .nav-width li {
     text-align: center;
 }
@@ -166,7 +173,7 @@ input:focus {
         text-align: center !important;
     }
 
-    .create-topic-btn {
+    .create-topic-btn, .reply-topic-btn {
         bottom: 10px !important;
         right: 10px !important;
     }
