@@ -4,15 +4,23 @@ h4{
 }
 
 .topic-create-form {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: center;
+
 }
 
-button {
-    text-transform: none !important;
-    margin-top: 10px; 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-action-btn {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: none;
+    border-radius: 15px;
 }
 
