@@ -7,11 +7,10 @@
 
 {% block content %}
 
-<div class="row register-card">
-    <form method="POST">
+<div class="register-card">
+    <form method="POST" class="register-form">
         {% csrf_token %} 
         {% for field in form %}
-        <div class="row">
             <div class="input-field">
                 {{field}}
                 <label for="{{field.id_for_label}}">
@@ -28,12 +27,10 @@
                             </span>
                         </div>
                     {% endif %}
-                </label>
-                    
+                </label> 
             </div>
-        </div>
         {% endfor %}
-        <button class="btn red button" type="submit">Εγγραφη</button>
+        <button class="btn red register-btn default-btn" type="submit">Εγγραφή</button>
     </form>
 </div>
 

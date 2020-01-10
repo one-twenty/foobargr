@@ -42,11 +42,12 @@ main {
 .search-bar {
     order: 2;
     height: 60px;
+    list-style: none;
 }
 
-.search-bar .input-field,
-.sidenav-search-bar .input-field {
+.search-bar .input-field{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -104,8 +105,7 @@ main {
 }
 
 input:focus {
-    border-bottom: 1px solid red !important;
-    box-shadow: 0 1px 0 0 red !important;
+    border-bottom: 2px solid red !important;
 }
 
 .create-topic-btn {
@@ -144,10 +144,8 @@ footer {
 /* SideNav */
 .sidenav-search-bar {
     transform: scale(0.9);
-}
-
-.sidenav-search-bar {
     height: 60px;
+    list-style: none;
 }
 
 /* Media Queries */
@@ -227,6 +225,7 @@ footer {
     border-radius: 15px !important;
 }
 
+/* Animations */
 @keyframes fade-up {
     from {
         opacity: 0;
