@@ -27,6 +27,37 @@ main {
     align-items: center;
 }
 
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-logo {
+    margin-left: 10px;
+    height: 50px;
+    order: 1;
+}
+
+.search-bar {
+    order: 2;
+    height: 60px;
+}
+
+.search-bar .input-field,
+.sidenav-search-bar .input-field {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-wrapper ul {
+    order: 3;
+}
+
+.image-logo {
+    height: 50px;
+}
+
 .nav-width li {
     text-align: center;
 }
@@ -77,16 +108,6 @@ input:focus {
     box-shadow: 0 1px 0 0 red !important;
 }
 
-.search-bar {
-    position: absolute;
-    left: 45%;
-    transform: scale(0.9);
-}
-
-.search-close-button {
-    margin-top: 12px;
-}
-
 .create-topic-btn {
     position: fixed;
     width: 60px;
@@ -113,13 +134,24 @@ input:focus {
     box-shadow: 0px 0px 3px #000;
 }
 
-.footer-copyright {
-    padding: 10px;
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     color: white;
 }
 
+/* SideNav */
+.sidenav-search-bar {
+    transform: scale(0.9);
+}
+
+.sidenav-search-bar {
+    height: 60px;
+}
+
 /* Media Queries */
-@media only screen and (min-width: 601px) {
+@media (min-width: 600px) {
     #toast-container {
         position: absolute;
         right: 0%;
@@ -127,23 +159,9 @@ input:focus {
         text-align: center;
         padding: 5px;
     }
-
-    .main-logo {
-        margin-left: 10px;
-        height: 6.5vh;
-        margin: 3px;
-    }
-
-    .brand-logo {
-        height: 6.5vh;
-    }
-
-    .create-topic-btn-plus {
-        transform: scale(1.6);
-    }
 }
 
-@media only screen and (max-width: 601px) {
+@media (max-width: 600px) {
     #toast-container {
         position: absolute;
         top: 0%;
@@ -152,22 +170,30 @@ input:focus {
         padding: 0 50px 0 50px;
     }
 
+    .sidenav-trigger {
+        order: 1;
+    }
+
     .main-logo {
-        margin: 5px;
+        order: 2;
+        padding-right: 40px;
+    }
+
+    .image-logo {
         height: 50px;
     }
 
-    .brand-logo {
-        height: 50px;
+    footer {
+        flex-direction: column;
     }
 
-    .footer-copyright {
-        display: block;
-        text-align: center !important;
+    footer a {
+        padding-top: 10px;
+        order: 1;
     }
 
-    .footer-copyright a {
-        text-align: center !important;
+    footer p {
+        order: 2;
     }
 
     .create-topic-btn,
@@ -175,24 +201,16 @@ input:focus {
         bottom: 10px !important;
         right: 10px !important;
     }
+}
 
-    .create-topic-btn-plus {
-        transform: scale(2);
+@media (max-width: 1000px) {
+    .search-bar {
+        display: none;
     }
-}
 
-/* SideNav */
-.sidenav-search-bar {
-    transform: scale(0.9);
-}
-
-.search-bar input,
-.sidenav-search-bar input {
-    color: grey;
-}
-
-.sidenav-search-bar .label-icon {
-    margin-top: 8px;
+    .main-logo {
+        margin: auto;
+    }
 }
 
 /* Global */
@@ -202,4 +220,18 @@ input:focus {
 
 .moderator {
     color: blue;
+}
+
+.default-btn {
+    text-transform: none !important;
+    border-radius: 15px !important;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

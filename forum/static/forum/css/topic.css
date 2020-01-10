@@ -197,7 +197,6 @@
     }
 }
 
-/* Global */
 .like {
     background: none;
     border-radius: 50%;
@@ -215,9 +214,4 @@
 
 .liked {
     background: #f44336;
-}
-
-.topic-action-btn, .topic-reply-btn {
-    text-transform: none;
-    border-radius: 15px;
 }

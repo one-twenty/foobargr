@@ -17,24 +17,23 @@
         <div class="navbar-fixed">
             <nav class="nav-extended grey darken-4">
                 <div class="nav-wrapper">
-                    <a href="{% url 'forum:homepage' %}" class="brand-logo">
-                        <img src="{% static 'assets/main-logo.png' %}" class="main-logo" />
+                    <a href="{% url 'forum:homepage' %}" class="main-logo">
+                        <img src="{% static 'assets/main-logo.png' %}" class="image-logo" />
                     </a>
 
                     <a href="#" data-target="mobile-links" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li class="search-bar">
-                            <div class="nav-wrapper">
-                                <form>
-                                    <div class="input-field">
-                                        <input id="search" type="search" required placeholder="Αναζήτηση" />
-                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                        <i class="material-icons">close</i>
-                                    </div>
-                                </form>
+                    <li class="search-bar">
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required placeholder="Αναζήτηση" />
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
                             </div>
-                        </li>
+                        </form>
+                    </li>
+
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
 
                         {% if user.is_authenticated %}
                             <li>
@@ -78,15 +77,13 @@
         <!-- Sidenav -->
         <ul class="sidenav grey darken-3" id="mobile-links">
             <li class="sidenav-search-bar">
-                <div class="nav-wrapper">
-                    <form>
-                        <div class="input-field">
-                            <input id="search-sidenav" type="search" required placeholder="Αναζήτηση" />
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i class="search-close-button material-icons">close</i>
-                        </div>
-                    </form>
-                </div>
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" required placeholder="Αναζήτηση" />
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
             </li>
 
             {% if user.is_authenticated %}
@@ -171,15 +168,15 @@
         </main>
 
         <!-- Footer -->
-        <footer class="page-footer grey darken-4">
-            <div class="footer-copyright grey darken-4">
-                <div class="container">
-                    © 2019 All Rights Reserved OneTwenty Inc.
+        <footer class="grey darken-4">
+            
+                
+                    <p>© 2019 All Rights Reserved OneTwenty Inc.</p>
                     <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/foobargr" target="blank">
                         See our project here.
                     </a>
-                </div>
-            </div>
+                
+            
         </footer>
     </body>
 </html>

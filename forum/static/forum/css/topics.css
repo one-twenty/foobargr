@@ -196,16 +196,3 @@
         display: none;
     }
 }
-
-@keyframes topics-show {
-    from {
-        transform: translateY(1000px);
-        opacity: 0;
-    }
-}
-
-/* Global */
-.topic-action-btn {
-    text-transform: none;
-    border-radius: 15px;
-}
