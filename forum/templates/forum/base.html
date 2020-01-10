@@ -2,15 +2,15 @@
 <html>
     <head>
         {% load static %}
+        <title>foo-bar.gr</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <link rel="stylesheet" href="{% static 'forum/css/base.css' %}">
+        <script src="{% static 'forum/js/base.js' %}" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         {% block styles %}
         {% endblock styles %}
-        <script src="{% static 'forum/js/base.js' %}" defer></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>foo-bar.gr</title>
     </head>
     <body>
 
@@ -60,7 +60,7 @@
                     
                         {% for category in categories %}
                             {% if category.id != 0 and category.parent_category == None %}
-                                <li class="catergories-tabs nav-categories-links"><a class="dropdown-trigger-categories" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
+                                <li class="nav-categories-links"><a class="dropdown-trigger-categories" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
                                     <ul id="dropdown-categories-{{category.id}}" class="grey darken-3 dropdown-content">
                                         {% for subcategory in categories %}
                                             {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
@@ -147,13 +147,9 @@
         </div>
 
         {% if user.is_authenticated and request.path|slice:'6' == '/topic' %}
-            <div class="create-topic">
-                <a class="btn create-topic-btn red" href="#post">Α</a>
-            </div>
+            <a class="btn reply-topic-btn red" href="#post">Απάντηση</a>
         {% elif user.is_authenticated and request.path != '/create-topic' %}
-            <div class="create-topic">
-                <a  class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}"><i class="create-topic-btn-plus material-icons">add</i></a>
-            </div>
+            <a class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}"><i class="create-topic-btn-plus material-icons">add</i></a>
         {% endif %}
        
     </main>

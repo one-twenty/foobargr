@@ -77,11 +77,6 @@ h4 {
     align-items: center;
 }
 
-.topic-action-btn {
-    text-transform: none;
-    border-radius: 15px;
-}
-
 .like {
     margin-right: 10px;
     background: none;
@@ -123,4 +118,6 @@ form {
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    text-transform: none;
+    border-radius: 15px;
 }
