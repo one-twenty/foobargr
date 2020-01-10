@@ -21,12 +21,9 @@ body {
 
 main {
     flex: 1 0 auto;
-}
-
-.container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -34,7 +31,7 @@ main {
     text-align: center;
 }
 
-.nav-width li a{
+.nav-width li a {
     text-align: center;
     font-size: 0.9rem;
 }
@@ -173,7 +170,8 @@ input:focus {
         text-align: center !important;
     }
 
-    .create-topic-btn, .reply-topic-btn {
+    .create-topic-btn,
+    .reply-topic-btn {
         bottom: 10px !important;
         right: 10px !important;
     }
