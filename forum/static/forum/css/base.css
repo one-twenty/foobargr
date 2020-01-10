@@ -13,6 +13,7 @@ body {
     background-color: #9e9e9e;
     color: black;
     display: flex;
+    justify-content: center;
     min-height: 100vh;
     flex-direction: column;
     scroll-behavior: smooth;
@@ -26,6 +27,11 @@ main {
     text-align: center;
 }
 
+.nav-width li a{
+    text-align: center;
+    font-size: 0.9rem;
+}
+
 .nav-content {
     display: flex !important;
     flex-direction: column;
@@ -34,7 +40,7 @@ main {
 
 .nav-categories {
     display: flex;
-    line-height: 45px;
+    line-height: 40px;
 }
 
 .nav-categories-links {
