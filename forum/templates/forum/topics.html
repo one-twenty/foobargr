@@ -56,9 +56,6 @@
             </div>
             <div class="topic-action">
                 <a class="btn red topic-action-btn" href="{% url 'forum:topic' topic.id %}">Εμφάνιση</a>
-                {% if user.is_authenticated %}
-                    <a class="btn red topic-action-btn" href="#">Απάντηση</a>
-                {% endif %}
             </div>  
         </div>   
     </div>
