@@ -22,3 +22,15 @@ form {
     margin-bottom: 10px;
 }
 
+label {
+    color: #242424;
+    font-size: 1.1rem;
+}
+
+form > input{
+    border-bottom: 1px solid #242424 !important;
+}
+
+.select-dropdown {
+    text-align: center;
+}
