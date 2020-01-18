@@ -1,112 +1,100 @@
-@media (min-width: 600px) {
+@media (min-width: 1000px) {
     h4 {
         margin-top: 60px;
     }
-
     .topic-card {
         margin: 10px;
         border-radius: 18px;
         display: flex;
         background: #212121;
         color: white;
+        position: relative;
+        animation: topics-show 1.2s;
         width: 1250px;
     }
 
     .card-user {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        flex-basis: 10%;
+        flex-basis: 20%;
     }
 
     .user-image {
-        margin: 10px 10px 0 10px;
+        flex-basis: 50%;
     }
 
     .user-image img {
-        width: 110px;
-        height: 110px;
+        width: 90px;
+        height: 90px;
         border-radius: 50%;
+        margin-top: 5px;
     }
 
     .user-info {
-        margin-bottom: 10px;
+        flex-basis: 50%;
+        margin-right: 10px;
     }
 
     .card-content {
+        flex: 6;
         display: flex;
         flex-direction: column;
-        flex-basis: 90%;
-        align-items: flex-start;
-        justify-content: flex-start;
+        flex-basis: 82%;
+    }
+
+    .topic-category,
+    .topic-action {
+        position: absolute;
+        margin-right: 8px;
+        right: 0;
+    }
+
+    .topic-category {
+        top: 0;
+        margin: 10px 15px;
+    }
+
+    .topic-action {
+        bottom: 0;
+        margin-bottom: 10px;
+    }
+
+    .topic-category a {
+        color: gray;
     }
 
     .topic-title {
         font-size: 1.5rem;
         order: 1;
         flex: 1;
-        margin-top: 5px;
     }
 
     .topic-datetime {
         order: 2;
-        flex: 1;
+        flex: 2;
         font-size: 0.8rem;
-        margin-top: 10px;
     }
 
     .topic-content {
-        order: 3;
-        flex: 5;
-        width: 1100px;
-        word-wrap: break-word;
+        order: 4;
+        flex: 3;
     }
 
     .divider {
-        order: 4;
+        order: 3;
         opacity: 0.3;
-        width: 99%;
+        width: 75%;
     }
 
-    .topic-action {
-        order: 5;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .like {
-        margin-right: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .liked:hover {
-        cursor: pointer;
-        background: blue;
-    }
-
-    .reply {
-        display: flex;
-        justify-content: center;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .topic-action-btn, .topic-reply-btn {
-        margin: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
+    .divider-mobile {
+        display: none;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
     h4 {
         font-size: 18px;
         margin-bottom: 20px;
@@ -150,7 +138,21 @@
         position: absolute;
         top: 0;
         right: 0;
-        margin: 25px 15px 15px 15px;
+        margin: 15px 10px;
+    }
+
+    .topic-category {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        font-size: 0.8rem;
+        margin-right: 10px;
+        text-align: center;
+        margin-top: -50px;
+    }
+
+    .topic-category a {
+        color: lightgray;
     }
 
     .card-content {
@@ -159,59 +161,38 @@
     }
 
     .topic-title {
-        font-size: 1.2rem;
+        order: 2;
+        font-size: 1.3rem;
         align-self: center;
         width: 320px;
     }
 
     .topic-content {
+        order: 3;
         align-self: center;
         width: 320px;
         word-wrap: break-word;
     }
 
-    .topic-content img,
-    .topic-content iframe {
-        width: 320px;
-    }
-
-    .topic-action {
-        margin: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    .topic-content p {
+        margin: 0;
+        margin-bottom: 3px;
     }
 
     .divider {
+        order: 4;
         opacity: 0.3;
         width: 330px;
         margin-left: 5px;
     }
 
-    .reply-form {
+    .topic-action {
+        margin: auto;
+        padding: 5px;
+        order: 5;
+    }
+
+    .topic-action a:nth-child(2) {
         display: none;
     }
-
-    .topic-reply-btn {
-        margin-bottom: 20px;
-    }
-}
-
-.like {
-    background: none;
-    border-radius: 50%;
-    border: none;
-    outline: none !important;
-    width: 40px;
-    height: 40px;
-    transition: ease 0.5s;
-}
-
-.like img {
-    filter: invert(80%);
-    height: 25px;
-}
-
-.liked {
-    background: #f44336;
 }

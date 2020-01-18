@@ -1,11 +1,57 @@
-h4{
-    margin-top: 60px;
+h4 {
+    margin-top: 50px;
+    text-align: center;
 }
 
-.publish-topic {
-    transform: translateX(1030%);
+.topic-create-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-button{
-    text-transform: none !important;
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-action-btn {
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+label {
+    color: #242424;
+    font-size: 1.1rem;
+}
+
+form > input {
+    border-bottom: 1px solid #242424 !important;
+}
+
+.select-dropdown {
+    text-align: center;
+}
+
+.dropdown-content li > span {
+    color: black;
+    background: gray;
+}
+
+.dropdown-content li > span:hover {
+    background: #616161;
+}
+
+.dropdown-content {
+    background: gray;
+    width: 300px !important;
+}
+
+.select-wrapper {
+    width: 300px;
+}
+
+.select-dropdown:hover {
+    background: gray !important;
 }

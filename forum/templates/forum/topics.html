@@ -1,0 +1,63 @@
+{% extends 'forum/base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'forum/css/topics.css' %}">
+{% endblock styles %}
+
+{% block content%}
+
+{% if request.path == '/' %}
+    <h4>Τελευταία Θέματα</h4>
+{% else %}
+    <h4>{{category.parent_category.name}} > {{category.name}}</h4> 
+{% endif %}
+
+{% for topic in topics %}
+
+    <div class="topic-card">
+        <div class="card-user">
+            <div class="user-image">
+                <a href="{% url 'forum:profile' topic.user.username %}">
+                    <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}"> 
+                </a>
+            </div>
+            <div class="user-info">
+                <a href="{% url 'forum:profile' topic.user.username %}">{{topic.user}}</a> 
+                <div class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</div>
+                <div>Posts: {{topic.user.userprofile.posts_count}}</div>  
+            </div>
+        </div>  
+        <div class="card-content">
+            <div class="topic-category">
+                <a href="/category/{{topic.category.url}}">{{topic.category}}</a>        
+            </div>
+            <div class="topic-datetime">
+                {{topic.datetime}}
+            </div>
+            <div class="topic-title">
+                <a style="color: white;" href="{% url 'forum:topic' topic.id %}">
+                    {% if topic.title|length > 43 %}
+                        {{topic.title|slice:40}}...</a>
+                    {% else %}
+                        {{topic.title}}
+                    {% endif %}
+                </a>
+            </div>
+            <div class="divider"></div>
+            <div class="topic-content">
+                    {% if topic.content|length > 100 %}
+                        {{topic.content|slice:97|safe}}...
+                    {% else %}
+                        {{topic.content|safe}}
+                    {% endif %}  
+            </div>
+            <div class="topic-action">
+                <a class="btn red topic-action-btn default-btn" href="{% url 'forum:topic' topic.id %}">Εμφάνιση</a>
+            </div>  
+        </div>   
+    </div>
+
+{% endfor %}
+
+{% endblock %}

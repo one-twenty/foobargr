@@ -2,48 +2,48 @@
 <html>
     <head>
         {% load static %}
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <link rel="stylesheet" href="{% static 'forum/css/base.css' %}">
-        {% block styles %}
-        {% endblock styles %}
-        <script src="{% static 'forum/js/base.js' %}" defer></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>foo-bar.gr</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+        <link rel="stylesheet" href="{% static 'forum/css/base.css' %}" />
+        <script src="{% static 'forum/js/base.js' %}" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% block styles %} 
+        {% endblock styles %}
     </head>
     <body>
-
-    <main>
-
         <!-- Navbar -->
         <div class="navbar-fixed">
             <nav class="nav-extended grey darken-4">
                 <div class="nav-wrapper">
-
-                    <a href="{% url 'forum:homepage' %}" class="brand-logo"><img src="{% static 'assets/main-logo.png' %}" class="main-logo"></a>
+                    <a href="{% url 'forum:homepage' %}" class="main-logo">
+                        <img src="{% static 'assets/main-logo.png' %}" class="image-logo" />
+                    </a>
 
                     <a href="#" data-target="mobile-links" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        
-                        <li class="search-bar">
-                            <div class="nav-wrapper">
-                                <form>
-                                    <div class="input-field">
-                                        <input id="search" type="search" required placeholder="Αναζήτηση">
-                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                        <i class="material-icons">close</i>
-                                    </div>
-                                </form>
+                    <li class="search-bar">
+                        <form>
+                            <div class="input-field">
+                                <input id="search" type="search" required placeholder="Αναζήτηση" />
+                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <i class="material-icons">close</i>
                             </div>
-                        </li>
-                            
+                        </form>
+                    </li>
+
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
                         {% if user.is_authenticated %}
-                            <li><a class="dropdown-trigger" href="#!" data-target="profile-dropdown">{{ user.username }}<i 
-                                class="material-icons right">person</i></a></li>
+                            <li>
+                                <a class="dropdown-trigger" href="#!" data-target="profile-dropdown">
+                                    {{ user.username }}
+                                    <i class="material-icons right">person</i>
+                                </a>
+                            </li>
                             <ul id="profile-dropdown" class="dropdown-content dropdown-profile">
-                                <li><a href="#!" class="black-text">Προφίλ</a></li>
+                                <li><a href="{% url 'forum:profile' user.username %}" class="black-text">Προφίλ</a></li>
                                 <li><a href="#!" class="black-text">Ρυθμίσεις</a></li>
                                 <li><a class="black-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
                             </ul>
@@ -51,55 +51,53 @@
                             <li><a href="{% url 'forum:login' %}">Σύνδεση</a></li>
                             <li><a href="{% url 'forum:register' %}">Εγγραφή</a></li>
                         {% endif %}
-
                     </ul>
-                    
-                </div>  
-            <div class="nav-content">
-                <ul id="nav-mobile" class="left hide-on-med-and-down nav-categories grey darken-3 nav-width">
-                
-                    {% for category in categories %}
-                        {% if category.id != 0 and category.parent_category == None %}
-                            <li class="catergories-tabs"><a class="dropdown-trigger-categories" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
-                                <ul id="dropdown-categories-{{category.id}}" class="grey darken-3 dropdown-content">
-                                    {% for subcategory in categories %}
-                                        {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
-                                            <li><a href="{% url 'forum:category' subcategory.url %}" class="white-text">{{subcategory}}</a></li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-    
-                </ul>
-            </div>
-        </nav>
-        </div>  
-  
+                </div>
+                <div class="nav-content">
+                    <ul id="nav-mobile" class="left hide-on-med-and-down nav-categories grey darken-3 nav-width">
+                        {% for category in categories %} 
+                            {% if category.id != 0 and category.parent_category == None %}
+                                <li class="nav-categories-links">
+                                    <a class="dropdown-trigger-categories" data-target="dropdown-categories-{{category.id}}">{{category}}</a>
+                                    <ul id="dropdown-categories-{{category.id}}" class="grey darken-3 dropdown-content">
+                                        {% for subcategory in categories %} 
+                                            {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
+                                                <li><a href="{% url 'forum:category' subcategory.url %}" class="white-text">{{subcategory}}</a></li>
+                                            {% endif %} 
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            {% endif %} 
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
         <!-- Sidenav -->
         <ul class="sidenav grey darken-3" id="mobile-links">
-
             <li class="sidenav-search-bar">
-                <div class="nav-wrapper">
-                    <form>
-                        <div class="input-field">
-                            <input id="search" type="search" required placeholder="Αναζήτηση">
-                            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                            <i class="search-close-button material-icons">close</i>
-                        </div>
-                    </form>
-                </div>
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" required placeholder="Αναζήτηση" />
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
             </li>
-            
+
             {% if user.is_authenticated %}
-                <li><a class="dropdown-trigger dropdown-hover white-text" href="#!" data-target="profile-dropdown-sidenav">{{ user.username }}<i 
-                    class="material-icons white-text">person</i></a></li>
-                    <ul id="profile-dropdown-sidenav" class="dropdown-content grey darken-3">
-                        <li><a href="#!" class="white-text">Προφίλ</a></li>
-                        <li><a href="#!" class="white-text">Ρυθμίσεις</a></li>
-                        <li><a class="white-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
-                    </ul>
+                <li>
+                    <a class="dropdown-trigger dropdown-hover white-text" href="#!" data-target="profile-dropdown-sidenav">
+                        {{ user.username }}
+                        <i class="material-icons white-text">person</i>
+                    </a>
+                </li>
+                <ul id="profile-dropdown-sidenav" class="dropdown-content grey darken-3">
+                    <li><a href="{% url 'forum:profile' user.username %}" class="white-text">Προφίλ</a></li>
+                    <li><a href="#!" class="white-text">Ρυθμίσεις</a></li>
+                    <li><a class="white-text" href="{% url 'forum:logout' %}">Αποσύνδεση</a></li>
+                </ul>
             {% else %}
                 <li><a class="white-text" href="{% url 'forum:login' %}">Σύνδεση</a></li>
                 <li><a class="white-text" href="{% url 'forum:register' %}">Εγγραφή</a></li>
@@ -109,60 +107,76 @@
                 <div class="divider"></div>
             </li>
 
-            {% for category in categories %}
+            {% for category in categories %} 
                 {% if category.id != 0 and category.parent_category == None %}
-                    <li><a class="dropdown-trigger dropdown-hover white-text" href="#{{category}}" data-target="sidenav-dropdown-categories-{{category.id}}">{{category}}</a>
+                    <li>
+                        <a
+                            class="dropdown-trigger dropdown-hover white-text"
+                            href="#{{category}}"
+                            data-target="sidenav-dropdown-categories-{{category.id}}"
+                        >
+                            {{category}}
+                        </a>
                         <ul id="sidenav-dropdown-categories-{{category.id}}" class="dropdown-content grey darken-3">
-                            {% for subcategory in categories %}
+                            {% for subcategory in categories %} 
                                 {% if subcategory.id != 0 and subcategory.parent_category.id == category.id %}
                                     <li><a href="{% url 'forum:category' subcategory.url %}" class="white-text">{{subcategory}}</a></li>
-                                {% endif %}
+                                {% endif %} 
                             {% endfor %}
                         </ul>
                     </li>
-                {% endif %}
+                {% endif %} 
             {% endfor %}
-            
         </ul>
 
         <!-- Error Messages -->
-        {% if messages %}
-            {% for message in messages %}
+        {% if messages %} 
+            {% for message in messages %} 
                 {% if message.tags == 'success' %}
-                    <script>M.toast({html: '{{message}}', classes:'green', displayLength:5000});</script>
-                {% elif message.tags == 'error' %}
-                    <script>M.toast({html: '{{message}}', classes:'red', displayLength:5000});</script>
-                {% elif message.tags == 'warning' %}
-                    <script>M.toast({html: '{{message}}', classes:'orange', displayLength:5000});</script>
-                {% elif message.tags == 'info' %}
-                    <script>M.toast({html: '{{message}}', classes:'blue', displayLength:5000});</script>
-                {% endif %}
-            {% endfor %}
+                    <script>
+                        M.toast({ html: "{{message}}", classes: "green", displayLength: 5000 });
+                    </script>
+                    {% elif message.tags == 'error' %}
+                    <script>
+                        M.toast({ html: "{{message}}", classes: "red", displayLength: 5000 });
+                    </script>
+                    {% elif message.tags == 'warning' %}
+                    <script>
+                        M.toast({ html: "{{message}}", classes: "orange", displayLength: 5000 });
+                    </script>
+                    {% elif message.tags == 'info' %}
+                    <script>
+                        M.toast({ html: "{{message}}", classes: "blue", displayLength: 5000 });
+                    </script>
+                {% endif %} 
+            {% endfor %} 
         {% endif %}
-        
-        <!-- Content -->
-        <div class="container"> 
-            {% block content %}
-            {% endblock %}
-        </div>
 
-        {% if user.is_authenticated and request.path != '/create-topic' %}
-            <div class="create-topic">
-                <a  class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}"><i class="create-topic-btn-plus material-icons">add</i></a>
-            </div>
-        {% endif %}
-       
-    </main>
+        <main>
+            <!-- Content -->
+            {% block content %} 
+            {% endblock %}
+
+            <!-- Create Topic - Reply Buttons -->
+            {% if user.is_authenticated and request.path|slice:'6' == '/topic' %}
+                <a class="reply-topic-btn" href="#post">Απάντηση</a>
+            {% elif user.is_authenticated and request.path != '/create-topic' %}
+                <a class="btn create-topic-btn red" href="{% url 'forum:create-topic' %}">
+                    <i class="create-topic-btn-plus material-icons">add</i>
+                </a>
+            {% endif %}
+        </main>
 
         <!-- Footer -->
-        <footer class="page-footer grey darken-4">
-            <div class="footer-copyright grey darken-4">
-                <div class="container">
-                    © 2019 All Rights Reserved OneTwenty Inc.
-                    <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/programatistisgr" target="blank">See our project here.</a></div> 
-                </div>
-            </div>
-        </footer> 
-
+        <footer class="grey darken-4">
+            
+                
+                    <p>© 2019 All Rights Reserved OneTwenty Inc.</p>
+                    <a class="grey-text text-lighten-4 right" href="https://github.com/one-twenty/foobargr" target="blank">
+                        See our project here.
+                    </a>
+                
+            
+        </footer>
     </body>
 </html>

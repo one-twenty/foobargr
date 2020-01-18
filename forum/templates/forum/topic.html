@@ -3,46 +3,95 @@
 {% load static %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'forum/css/topic.css' %}">
+    {{form.media}}
 {% endblock styles %}
 
-{% block content %}
+{% block content%}
 
 <h4>{{topic.category.parent_category.name}} > {{topic.category.name}}</h4>
 
 <div class="topic-card">
-    <div class="col s12 m7">
-        <div class="card horizontal">
-            <div class="card-image">
-                <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}"> 
+    <div class="card-user">
+        <div class="user-image">
+            <a href="{% url 'forum:profile' topic.user.username %}">
+                <img src="{% static topic.user.userprofile.image.url|slice:'13:' %}" />
+            </a>
+        </div>
+        <div class="user-info">
+            <a href="{% url 'forum:profile' topic.user.username %}">{{topic.user}}</a>
+            <div class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</div>
+            <div>Posts: {{topic.user.userprofile.posts_count}}</div>
+        </div>
+    </div>
+    <div class="card-content">
+        <div class="topic-datetime">
+            {{topic.datetime}}
+        </div>
+        <div class="topic-title">
+            {{topic.title}}
+        </div>
+        <div class="topic-content">
+            {{topic.content|safe}}
+        </div>
+        <div class="divider"></div>
+        <div class="topic-action">
+            <div class="btns">
+                <a class="btn topic-action-btn red default-btn" href="#post">Παράθεση</a>
+                {% if topic.user == user %}
+                <a class="btn topic-action-btn red default-btn" href="#post">Επεξεργασία</a>
+                {% endif %}
             </div>
-            <div class="user">
-                <p>
-                    <a href="#">{{topic.user}}</a> <br>
-                    <span class="{{topic.user.userprofile.role|lower}}">{{topic.user.userprofile.get_role_display}}</span><br>
-                    Posts: {{topic.user.userprofile.posts}}
-                </p>
-            </div>
-            <div class="card-stacked">
-                <div class="datetime-published">
-                    <p>{{topic.datetime}}</p>
-                </div>
-                <div class="post-title">
-                    {{topic.title}}
-                </div>
-                <div class="card-content">
-                    <p>
-                        {{topic.content|safe}}
-                    </p>
-                </div>
-                <div class="card-action">
-                    {% if topic.user == user %}
-                        <a class="btn red" href="#">Επεξεργασία</a>
-                    {% endif %}
-                    <a class="btn red" href="#">Απάντηση</a>
-                </div>
-            </div>
+            <button id="{{topic.id}}" class="like"><img src="{% static 'assets/like-btn.png' %}" /></button>
         </div>
     </div>
 </div>
 
-{% endblock  %}
+{% for post in posts %}
+<div class="topic-card">
+    <div class="card-user">
+        <div class="user-image">
+            <a href="{% url 'forum:profile' post.user.username %}">
+                <img src="{% static post.user.userprofile.image.url|slice:'13:' %}" />
+            </a>
+        </div>
+        <div class="user-info">
+            <a href="{% url 'forum:profile' post.user.username %}">{{post.user}}</a>
+            <div class="{{post.user.userprofile.role|lower}}">{{post.user.userprofile.get_role_display}}</div>
+            <div>Posts: {{post.user.userprofile.posts_count}}</div>
+        </div>
+    </div>
+    <div class="card-content">
+        <div class="topic-datetime">
+            {{post.datetime}}
+        </div>
+        <div class="topic-content">
+            {{post.content|safe}}
+        </div>
+        <div class="divider"></div>
+        <div class="topic-action">
+            <div class="btns">
+                <a class="btn topic-action-btn red default-btn" href="#post">Παράθεση</a>
+                {% if post.user == user %}
+                <a class="btn topic-action-btn red default-btn" href="#post">Επεξεργασία</a>
+                {% endif %}
+            </div>
+            <button id="{{post.id}}" class="like">
+                <img src="{% static 'assets/like-btn.png' %}" />
+            </button>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<div id="post" class="reply">
+    <form method="POST">
+        {% csrf_token %} 
+        <div class="reply-form">
+            {{form}}
+        </div>
+        <button type="submit" class="btn red topic-reply-btn default-btn">Δημοσίευση</button>
+    </form>
+    <div>
+        {% endblock %}
+    </div>
+</div>
