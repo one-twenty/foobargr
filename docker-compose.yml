@@ -1,0 +1,7 @@
+version: '3.7'
+
+services: 
+    foobar:
+        build: .
+        ports:
+            - '8000:8000'
